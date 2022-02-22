@@ -1,0 +1,29 @@
+{
+  "name": "szerveroldali",
+  "version": "1.0.0",
+  "description": "Szerveroldali JS Házi feladat",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Technomann/szerveroldali-JS.git"
+  },
+  "keywords": [
+    "javascript",
+    "nodejs"
+  ],
+  "author": "ReiterM",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Technomann/szerveroldali-JS/issues"
+  },
+  "homepage": "https://github.com/Technomann/szerveroldali-JS#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  },
+  "devDependencies": {
+    "mocha": "^9.2.1"
+  }
+}
