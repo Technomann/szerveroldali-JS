@@ -10,28 +10,27 @@
     <link rel="stylesheet" href="/design/css/custom.css">
     <link rel="preload" href="./spline/scene.json" as="fetch">
 </head>
-<body>
-
-    <div id="intro">
-        <div class="container">
-            <div class="row">
-                <div id="title" class="col-12">
-                    <h1 id="intro-title-main">Welcome!</h1>
-                    <h2 id="intro-title-sub">to the<br>Star Wars Spacecraft Comparator</h2>
-                </div>
-                <div id="begin" class="col-12">
-                    <a class="btn btn-blue" href="/homepage.html">BEGIN THE JOUNREY</a>
-                </div>
-                <p id="canvas-p">(Feel free to have a look at this beauty with the cursor)</p>
+<body id="intro">
+    <main class="container">
+        <div class="row">
+            <div id="title" class="col-12">
+                <h1 id="intro-title-main">Welcome!</h1>
+                <h2 id="intro-title-sub">to the<br>Star Wars Spacecraft Comparator</h2>
             </div>
-            <div id="container" >
-                <canvas id="canvas3d"></canvas>
+            <div id="begin" class="col-12">
+                <a class="btn btn-darks" href="homepage.html">BEGIN THE JOUNREY</a>
             </div>
-            <div id="copyright" class="row">
-                <p>Készítette: ReiterM, 2022</p>
-            </div>
+            <p id="canvas-p">(Feel free to have a look at this beauty with the cursor)</p>
         </div>
-    </div>
+        <div id="container" >
+            <canvas id="canvas3d"></canvas>
+        </div>
+    </main>
+    <footer class="container copyright">
+        <div class="row">
+            <p>Készítette: ReiterM, 2022</p>
+        </div>
+    </footer>
 
     <script src="/design/bootstrap/bootstrap.bundle.min.js"></script>
     <script type="module" src="/spline/start.js"></script>
