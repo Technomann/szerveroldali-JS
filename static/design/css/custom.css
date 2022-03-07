@@ -23,8 +23,8 @@ body{
     text-decoration: none;
 }
 
-.btn-blue{
-    background-color: #037bfe;
+.btn-grey{
+    background-color: #008a07;
 }
 
 .btn-darks{
@@ -172,18 +172,181 @@ tr{
     background-color: #a7a7a7;
 }
 
-.red-row:hover{
-    background-color: #e34c3c;
+.gray-row:hover{
+    background-color: #666666;
     color: #000;
+}
+
+input[type="checkbox"]{
+    width: 80%;
 }
 
 .title-container{
     margin-bottom: 40px;
 }
 
+.checkbox-container {
+    display: block;
+    position: relative;
+    margin-bottom: 30px;
+    margin-left: 25px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 22px;
+}
+  
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+.checkbox-container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background-color: #424242;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkbox-container .checkmark:after {
+    left: 10px;
+    top: 7px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+.details-img{
+    object-fit: cover;
+    width: 100%;
+    height: 350px;
+    margin-top: 50px;
+    border-radius: 15px;
+}
+
+table{
+    margin: 50px 0;
+    width: 100%;
+}
+
+.spacecraft-title, .spacecraft-type{
+    font-family: 'star-wars';
+    color: #ffe81f;
+    font-size: 40px;
+}
+
+.comment{
+    margin: 10px auto 50px auto;
+    width: 70%;
+    background-color: #a7a7a7;
+    border-radius: 10px;
+    padding: 40px;
+}
+
+.b-right{
+    border-right: 2px solid #000;
+}
+
+.b-left{
+    border-left: 2px solid #000;
+}
+
+.size-20{
+    width: 20%;
+}
+
+.size-30{
+    width: 30%;
+}
+
+.italic{
+    font-style: italic;
+}
+
+.comparison-images-container{
+    justify-content: space-around;
+    margin: 30px 0;
+}
+
+.comparison-images-container img{
+    width: 48%;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 15px;
+    top: 0;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.comparison-images-container img:hover{
+    top: -10px;
+    box-shadow: 0 4px 8px 0 rgb(255 255 255 / 80%), 0 6px 20px 0 rgb(255 255 255 / 80%);
+}
+
 .flexbox{
     display: flex;
 }
+
+.new-layer{
+    position: relative;
+}
+
+/* MODAL */
+#modal-container {
+    display: none;
+    position: fixed;
+    z-index: 4;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.9);
+}
+
+#modal-close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    cursor: pointer;
+}
+
+#modal-close img {
+    width: 40px;
+}
+
+#modal-content {
+    margin: 80px auto auto auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+
+}
+/* MODAL END */
 
 /* INDEX.HTML */
 
@@ -250,8 +413,40 @@ canvas{
 
 /* HOMEPAGE.HTML */
 
-#homepage table{
-    margin: 50px 0;
+#homepage table .btn-darks{
+    margin-bottom: 4px;
 }
 
 /* HOMEPAGE.HTML END */
+
+/* COMPARE.HTML */
+
+#compare table{
+    margin-top: 10px;
+}
+
+#compare .comment{
+    width: 95%;
+}
+
+/* COMPARE.HTML END */
+
+/* LOGIN.HTML */
+
+#login form{
+    margin: 40px auto 0 auto;
+    text-align: left;
+    width: 200px;
+}
+
+#login label{
+    display: block;
+}
+
+#login input[type="text"], 
+#login input[type="email"],
+#login input[type="password"] {
+    display: block;
+}
+
+/* LOGIN.HTML END */
