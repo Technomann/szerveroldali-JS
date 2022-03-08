@@ -34,27 +34,31 @@
                     <a class="btn btn-darks">
                         Register
                     </a>
+                    <a class="btn btn-darks">
+                        Login
+                    </a>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12 center">
-                    <form>
-                        <div>
-                            <label>
-                                Username: 
-                                <input type="text">
-                            </label>
-                        </div>
-                        <div>
-                            <label>
-                                Password: 
-                                <input type="password">
-                            </label>
-                        </div>
-                        <a href="homepage.html">Cancel</a>
-                        <input type="submit" value="Login">
-                    </form>
-                    <a href="#" >Forgotten password?</a>
+                    <div class="login-container">
+                        <form>
+                            <div class="input-field">
+                                <input id="username" type="text" required >
+                                <label for="username">Your username</label>
+                            </div>
+                            <div class="input-field">
+                                <input id="password" type="password" required >
+                                <label for="password">Your password</label>
+                            </div>
+                            <div class="login-buttons flexbox">
+                                <a class="btn btn-darks" href="homepage.html">Cancel</a>
+                                <input class="btn btn-darks" type="submit" value="Login">
+                            </div>
+                            
+                        </form>
+                        <a class="forgotten-password btn btn-darks" href="#" >Forgot password?</a>
+                    </div>
                 </div>
             </div>
         </div>

@@ -128,7 +128,7 @@ nav a.compare{
     color: #a7a7a7;
 }
 
-nav a.login-register{
+nav a.login-register, nav a.logged-in-user{
     background-color: #a7a7a7;
     color: #000;
 }
@@ -283,6 +283,10 @@ table{
     width: 30%;
 }
 
+.size-100{
+    width: 100%;
+}
+
 .italic{
     font-style: italic;
 }
@@ -305,6 +309,31 @@ table{
 .comparison-images-container img:hover{
     top: -10px;
     box-shadow: 0 4px 8px 0 rgb(255 255 255 / 80%), 0 6px 20px 0 rgb(255 255 255 / 80%);
+}
+
+.login-container{
+    background-color: #696969;
+    min-width: 300px;
+    width: 30%;
+    margin: 50px auto 0 auto;
+    padding: 40px;
+    border-radius: 10px;
+}
+
+.forgotten-password{
+    margin-top: 10px;
+}
+
+.user-profile-pic{
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.upload-photo{
+    margin-bottom: 30px;
+    background: url('assets/file_upload.png');
+    background-size: contain;
 }
 
 .flexbox{
@@ -340,10 +369,10 @@ table{
 }
 
 #modal-content {
-    margin: 80px auto auto auto;
+    margin: 30% auto auto auto;
     display: block;
     width: 80%;
-    max-width: 700px;
+    max-width: 1200px;
 
 }
 /* MODAL END */
@@ -433,20 +462,68 @@ canvas{
 
 /* LOGIN.HTML */
 
-#login form{
-    margin: 40px auto 0 auto;
+form{
     text-align: left;
-    width: 200px;
 }
 
-#login label{
-    display: block;
+.login-buttons{
+    justify-content: space-between;
+    margin: 30px 0;
 }
 
-#login input[type="text"], 
-#login input[type="email"],
-#login input[type="password"] {
-    display: block;
+.input-field{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    line-height: 44px;
+    margin-bottom: 15px;
 }
+
+.input-field label{
+    position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: #a7a7a7;
+  transition: 0.2s all;
+  cursor: text;
+}
+
+.input-field input{
+    width: 100%;
+    border: 0;
+    outline: 0;
+    border-bottom: 2px solid #a7a7a7;
+    box-shadow: none;
+    color: #111;
+    background-color: #696969;
+    border-radius: 1px;
+}
+
+.input-field input:invalid {
+    outline: 0;
+}
+
+.input-field input:focus,
+.input-field input:valid {
+    border-color: #424242;
+}
+
+.input-field input:focus~label,
+.input-field input:valid~label {
+    font-size: 14px;
+    top: -24px;
+    color: #424242;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+  }
 
 /* LOGIN.HTML END */
