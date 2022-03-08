@@ -27,12 +27,16 @@ body{
     background-color: #008a07;
 }
 
-.btn-darks{
+.btn-darks, #coverflow .btn-darks{
     background-color: #262626;
     color: #a7a7a7;
 }
 
-.btn:hover {
+#coverflow .btn-darks:hover{
+    color: #262626;
+}
+
+.btn:hover, #coverflow .btn:hover {
     top: 3px;
     left: -3px;
     box-shadow: -3px 3px 0 #404040;
@@ -123,7 +127,7 @@ nav a{
     padding: 21px 30px;
 }
 
-nav a.compare{
+nav a.compare, nav a.listing{
     background-color: #262626;
     color: #a7a7a7;
 }
@@ -330,10 +334,24 @@ table{
     margin-right: 10px;
 }
 
-.upload-photo{
-    margin-bottom: 30px;
-    background: url('assets/file_upload.png');
-    background-size: contain;
+#upload-photo{
+    width: 30px;
+    height: 30px;
+    margin-bottom: 3px;
+    transition: transform 0.4s ease-in-out;
+}
+
+#upload-container:hover #upload-photo{
+    transform: rotate(360deg);
+}
+
+#upload-input{
+    display: none;
+}
+
+label[for="spacecraft-photo"]{
+    cursor: pointer;
+    margin-bottom: 20px;
 }
 
 .flexbox{
@@ -527,3 +545,31 @@ input[type=number] {
   }
 
 /* LOGIN.HTML END */
+
+/* COVERFLOW.HTML */
+
+#coverflow{
+    background-color: #000;
+}
+
+.gallery-controls{
+    background-color: #a7a7a7;
+    width: fit-content;
+    min-width: 250px;
+    margin: 0 auto;
+    justify-content: space-between;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.gallery-controls button{
+    padding: 20px;
+    background-color: #424242;
+    margin: 0;
+}
+
+.gallery-controls-add, .gallery-controls-previous::before, .gallery-controls-next::before{
+    display: none;
+}
+
+/* COVERFLOW.HTML END */
