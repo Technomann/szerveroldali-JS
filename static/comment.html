@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-    <title>Login</title>
+    <title>New spacecraft</title>
     
     <link rel="stylesheet" href="/design/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="/design/css/custom.css">
 </head>
-<body id="login">
+<body id="addnew">
     <nav>
         <ul class="flexbox">
             <li>
@@ -17,47 +17,38 @@
                     <img src="assets/sw.png" />
                 </a>
             </li>
+            <li class="m-left-auto">
+                <a class="logged-in-user" href="#">
+                    <img class="user-profile-pic" src="assets/users/default_user.png">
+                    Hello, *user*!
+                </a>
+            </li>
         </ul>
     </nav>
     <div class="title-container">
         <h2>
-            Login or register
+            Rate spacecraft
         </h2>
     </div>
     <main class="content">
         <div class="container">
             <div class="row">
-                <div class="col-12">
-                    <a class="btn btn-darks" href="homepage.html">
-                        Back to listing
-                    </a>
-                    <a class="btn btn-darks">
-                        Register
-                    </a>
-                    <a class="btn btn-darks">
-                        Login
-                    </a>
-                </div>
-            </div>
-            <div class="row">
                 <div class="col-12 center">
                     <div class="input-container">
                         <form>
                             <div class="input-field">
-                                <input id="username" type="text" required >
-                                <label for="username">Your username</label>
+                                <input id="spacecraft-comment" type="text" required >
+                                <label for="spacecraft-comment">Comment</label>
                             </div>
                             <div class="input-field">
-                                <input id="password" type="password" required >
-                                <label for="password">Your password</label>
+                                <input id="spacecraft-rating" type="number" required min="1" max="5">
+                                <label for="spacecraft-rating">Rating</label>
                             </div>
                             <div class="add-buttons flexbox">
-                                <a class="btn btn-darks" href="homepage.html">Cancel</a>
-                                <input class="btn btn-darks" type="submit" value="Login">
+                                <a class="btn btn-darks" href="details.html">Cancel</a>
+                                <input class="btn btn-darks" type="submit" value="Add">
                             </div>
-                            
                         </form>
-                        <a class="forgotten-password btn btn-darks" href="#" >Forgot password?</a>
                     </div>
                 </div>
             </div>

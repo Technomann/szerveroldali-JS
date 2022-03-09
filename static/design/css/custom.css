@@ -315,7 +315,7 @@ table{
     box-shadow: 0 4px 8px 0 rgb(255 255 255 / 80%), 0 6px 20px 0 rgb(255 255 255 / 80%);
 }
 
-.login-container{
+.input-container{
     background-color: #696969;
     min-width: 300px;
     width: 30%;
@@ -354,6 +354,10 @@ label[for="spacecraft-photo"]{
     margin-bottom: 20px;
 }
 
+.user-owner{
+    color: #a7a7a7;
+}
+
 .flexbox{
     display: flex;
 }
@@ -387,7 +391,7 @@ label[for="spacecraft-photo"]{
 }
 
 #modal-content {
-    margin: 30% auto auto auto;
+    margin: 150px auto auto auto;
     display: block;
     width: 80%;
     max-width: 1200px;
@@ -484,7 +488,7 @@ form{
     text-align: left;
 }
 
-.login-buttons{
+.add-buttons{
     justify-content: space-between;
     margin: 30px 0;
 }
