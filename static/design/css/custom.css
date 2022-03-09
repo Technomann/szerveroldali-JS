@@ -546,30 +546,25 @@ input[type=number] {
 
 /* LOGIN.HTML END */
 
-/* COVERFLOW.HTML */
+/* GRID.HTML */
 
-#coverflow{
-    background-color: #000;
+.grid-item img{
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+    transition: all 0.3s;
+    top: 0;
+    position: relative;
 }
 
-.gallery-controls{
-    background-color: #a7a7a7;
-    width: fit-content;
-    min-width: 250px;
-    margin: 0 auto;
-    justify-content: space-between;
-    padding: 20px;
-    border-radius: 10px;
+.grid-item img:hover{
+    top: -15px;
+    box-shadow: 0 4px 8px 0 rgb(255 255 255 / 80%), 0 6px 20px 0 rgb(255 255 255 / 80%);
 }
 
-.gallery-controls button{
-    padding: 20px;
-    background-color: #424242;
-    margin: 0;
+.grid-item{
+    margin-bottom: 20px;
 }
 
-.gallery-controls-add, .gallery-controls-previous::before, .gallery-controls-next::before{
-    display: none;
-}
-
-/* COVERFLOW.HTML END */
+/* GRID.HTML END */
