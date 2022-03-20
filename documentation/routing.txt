@@ -1,0 +1,27 @@
+"" - index.html
+POST /login - adatok validálása, ha jó, akkor /spacecrafts/list, egyébként ugyanitt hiba
+POST /register - adatok validálása, ha jó, akkor /spacecrafts/list, egyébként ugyanitt hiba
+POST /logout - kiléptetés, index.html-re ("")
+
+GET /spacecrafts/list
+GET /spacecrafts/grid 
+
+GET /spacecrafts
+GET /spacecraft/:spacecraftid
+GET /spacecraft/details/:spacecraftid
+GET /spacecrafts/new
+POST /spacecrafts/new
+GET /spacecraft/:spacecraftid/edit
+POST /spacecraft/:spacecraftid/edit
+GET (DELETE kéne) /spacecraft/:spacecraftid/delete
+
+GET /comments/:spacecraftid 
+GET /comment/:spacecraftid/new 
+POST /comment/:spacecraftid/new 
+GET /comment/:spacecraftid/:commentid/edit
+POST /comment/:spacecraftid/:commentid/edit
+GET (DELETE kéne) /comment/:spacecraftid/:commentid/delete
+
+GET /compare?ida=valami&idb=valamimas
+
+GET/users/:userid/spacecrafts
