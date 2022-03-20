@@ -97,7 +97,7 @@ a:active.btn:after {
     text-align: center;
 }
 
-#intro-title-main, #intro-title-sub, .title-container h2{
+#intro-title-main, #intro-title-sub, .title-container h2, #intro-title-username{
     color: #ffe81f;
     font-family: 'star-wars';
     text-align: center;
@@ -107,7 +107,7 @@ nav ul{
     list-style-type: none;
     padding-left: 0;
     margin-bottom: 0;
-    height: 100%;
+    height: 60px;
     align-items: center;
 }
 
@@ -132,12 +132,23 @@ nav a.compare, nav a.listing{
     color: #a7a7a7;
 }
 
-nav a.login-register, nav a.logged-in-user{
+/*nav a.login-register,*/ #logged-in-user, #logout-button{
     background-color: #a7a7a7;
     color: #000;
 }
 
-nav a:hover{
+#logged-in-user{
+    cursor: pointer;
+}
+
+#logout-button{
+    position: fixed;
+    top: 59px;
+    right: 0;
+    border: 1px solid #000;
+}
+
+nav a:hover, #logged-in-user:hover, #logout-button:hover{
     background-color: #e34c3c;
     color: #000;
 }
@@ -152,10 +163,6 @@ nav a.sw-logo{
 
 nav{
     margin-bottom: 30px;
-}
-
-table{
-    width: 100%;
 }
 
 th{
@@ -253,8 +260,8 @@ input[type="checkbox"]{
 }
 
 table{
-    margin: 50px 0;
     width: 100%;
+    margin-bottom: 20px;
 }
 
 .spacecraft-title, .spacecraft-type{
@@ -285,6 +292,10 @@ table{
 
 .size-30{
     width: 30%;
+}
+
+.size-80{
+    width: 80%;
 }
 
 .size-100{
@@ -325,10 +336,10 @@ table{
 }
 
 .forgotten-password{
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
-.user-profile-pic{
+#user-profile-pic{
     width: 30px;
     height: 30px;
     margin-right: 10px;
@@ -349,6 +360,11 @@ table{
     display: none;
 }
 
+#upload-container {
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
 label[for="spacecraft-photo"]{
     cursor: pointer;
     margin-bottom: 20px;
@@ -364,6 +380,18 @@ label[for="spacecraft-photo"]{
 
 .new-layer{
     position: relative;
+}
+
+.row.buttons{
+    margin-bottom: 50px;
+}
+
+.block{
+    display: block;
+}
+
+.hidden{
+    display: none;
 }
 
 /* MODAL */
@@ -399,23 +427,28 @@ label[for="spacecraft-photo"]{
 }
 /* MODAL END */
 
-/* INDEX.HTML */
+/* HOMEPAGE.HTML */
 
-#intro .container{
+#homepage .container{
     text-align: center;
 }
 
-#intro div[class*="container"]{
+#homepage div[class*="container"]{
     padding: 0;
 }
 
-#intro .title{
+#homepage .title{
     text-align: center;
 }
 
 #intro-title-main{
     font-size: 6rem;
     margin-top: 35px;
+}
+
+#intro-title-username{
+    font-size: 2.5rem;
+    margin-bottom: 20px;
 }
 
 #intro-title-sub{
@@ -430,7 +463,7 @@ label[for="spacecraft-photo"]{
     margin-top: 30px;
 }
 
-#intro .continue{
+#homepage .continue{
     text-align: center;
 }
 
@@ -460,15 +493,15 @@ canvas{
     margin-bottom: 20px;
 }
 
-/* INDEX.HTML END */
+/* HOMEPAGE.HTML END */
 
-/* HOMEPAGE.HTML */
+/* LIST.HTML */
 
-#homepage table .btn-darks{
+#list table .btn-darks{
     margin-bottom: 4px;
 }
 
-/* HOMEPAGE.HTML END */
+/* LIST.HTML END */
 
 /* COMPARE.HTML */
 
@@ -482,7 +515,7 @@ canvas{
 
 /* COMPARE.HTML END */
 
-/* LOGIN.HTML */
+/* INDEX.HTML */
 
 form{
     text-align: left;
@@ -503,12 +536,12 @@ form{
 
 .input-field label{
     position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  color: #a7a7a7;
-  transition: 0.2s all;
-  cursor: text;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: #a7a7a7;
+    transition: 0.2s all;
+    cursor: text;
 }
 
 .input-field input{
@@ -546,9 +579,13 @@ input::-webkit-inner-spin-button {
 
 input[type=number] {
     -moz-appearance: textfield;
-  }
+}
 
-/* LOGIN.HTML END */
+#register-form{
+    display: none;
+}
+
+/* INDEX.HTML END */
 
 /* GRID.HTML */
 

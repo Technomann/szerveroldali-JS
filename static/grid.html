@@ -17,16 +17,15 @@
                     <img src="assets/sw.png" />
                 </a>
             </li>
-            <li>
-                <a class="listing" href="homepage.html" >
-                    Show in list
-                </a>
-            </li>
             <li class="m-left-auto">
-                <a class="login-register" href="login.html">
-                    Login/Register
+                <a id="logged-in-user">
+                    <img id="user-profile-pic" src="assets/users/default_user.png">
+                    Hello, *user*!
                 </a>
             </li>
+            <a id="logout-button" class="hidden" href="#">
+                Log out
+            </a>
         </ul>
     </nav>
     <div class="title-container">
@@ -36,6 +35,13 @@
     </div>
     <main class="content">
         <div class="container">
+            <div class="row buttons">
+                <div class="col-12">
+                    <a class="btn btn-darks" href="list.html">
+                        Show in list
+                    </a>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-4">
                     <div class="grid-item">
@@ -81,6 +87,8 @@
             <p>Készítette: ReiterM, 2022</p>
         </div>
     </footer>
+
     <script src="/design/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="/js/logout.js"></script>
 </body>
 </html>

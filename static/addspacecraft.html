@@ -18,11 +18,14 @@
                 </a>
             </li>
             <li class="m-left-auto">
-                <a class="logged-in-user" href="#">
-                    <img class="user-profile-pic" src="assets/users/default_user.png">
+                <a id="logged-in-user">
+                    <img id="user-profile-pic" src="assets/users/default_user.png">
                     Hello, *user*!
                 </a>
             </li>
+            <a id="logout-button" class="hidden" href="#">
+                Log out
+            </a>
         </ul>
     </nav>
     <div class="title-container">
@@ -34,7 +37,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <a class="btn btn-darks" href="homepage.html">
+                    <a class="btn btn-darks" href="list.html">
                         Back to listing
                     </a>
                 </div>
@@ -88,7 +91,7 @@
                                 <label for="spacecraft-velocity">Maximum velocity (km/h)</label>
                             </div>
                             <p class="center">If no data for given property,<br>use '-' character or 0 for numbers!</p>
-                            <label id="upload-container" for="spacecraft-photo">
+                            <label id="upload-container" for="upload-input">
                                 <img id="upload-photo" src="assets/file_upload.png">
                                 <span id="upload-text">Select an image</span>
                             </label>
@@ -108,6 +111,7 @@
     </footer>
 
     <script src="/design/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="/js/logout.js"></script>
     <script src="/js/file_upload.js"></script>
 </body>
 </html>

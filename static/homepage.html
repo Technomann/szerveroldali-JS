@@ -4,94 +4,29 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-    <title>Homepage</title>
+    <title>Spacecraft Comparator</title>
     
     <link rel="stylesheet" href="/design/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="/design/css/custom.css">
+    <link rel="preload" href="./spline/scene.json" as="fetch">
 </head>
 <body id="homepage">
-    <nav>
-        <ul class="flexbox">
-            <li>
-                <a class="sw-logo" href="https://starwars.com" target="_blank">
-                    <img src="assets/sw.png" />
-                </a>
-            </li>
-            <li>
-                <a class="compare" href="compare.html">
-                    Compare
-                </a>
-            </li>
-            <li class="m-left-auto">
-                <a class="login-register" href="login.html">
-                    Login/Register
-                </a>
-            </li>
-        </ul>
-    </nav>
-    <div class="title-container">
-        <h2>
-            Your spacecrafts
-        </h2>
-    </div>
-    <main class="content">
-        <div class="container">
-            <div class="row buttons">
-                <div class="col-12">
-                    <a class="btn btn-darks" href="grid.html">
-                        Show in grid
-                    </a>
-                    <a class="btn btn-darks" href="addspacecraft.html">
-                        Add spacecraft
-                    </a>
-                </div>
+    <main class="container">
+        <div class="row">
+            <div id="title" class="col-12">
+                <h1 id="intro-title-main">Welcome</h1>
+                <h4 id="intro-title-username">@username,</h4>
+                <h2 id="intro-title-sub">to the<br>Star Wars Spacecraft Comparator</h2>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <table>
-                        <tr>
-                            <th>Name</th>
-                            <th>Manufacturer</th>
-                            <th>Type</th>
-                            <th>Max. velocity</th>
-                            <th>Price</th>
-                            <th>Details</th>
-                            <th>Compare</th>
-                        </tr>
-                        <tr class="spacecraft-table-row gray-row">
-                            <td>LA-AT</td>
-                            <td>Rothana Heavy Engineering</td>
-                            <td>Gunship</td>
-                            <td>700 km/h</td>
-                            <td>$200 000</td>
-                            <td><a class="btn btn-darks" href="details.html">Details</a></td>
-                            <td>
-                                <label class="checkbox-container">
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </td>
-                        </tr>
-                        <tr class="spacecraft-table-row gray-row">
-                            <td>X-wing</td>
-                            <td>Incom Coproration</td>
-                            <td>Starfighter</td>
-                            <td>2500 km/h</td>
-                            <td>$290 000</td>
-                            <td><a class="btn btn-darks" href="details.html">Details</a></td>
-                            <td>
-                                <label class="checkbox-container">
-                                    <input type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
+            <div id="begin" class="col-12">
+                <a class="btn btn-darks" href="list.html">BEGIN THE JOUNREY</a>
             </div>
+            <p id="canvas-p">(Feel free to have a look at this beauty with the cursor)</p>
+        </div>
+        <div id="container" >
+            <canvas id="canvas3d"></canvas>
         </div>
     </main>
-
     <footer class="container copyright">
         <div class="row">
             <p>Készítette: ReiterM, 2022</p>
@@ -99,5 +34,6 @@
     </footer>
 
     <script src="/design/bootstrap/bootstrap.bundle.min.js"></script>
+    <script type="module" src="/spline/start.js"></script>
 </body>
 </html>
