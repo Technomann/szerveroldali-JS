@@ -3,25 +3,27 @@ POST /login - adatok validálása, ha jó, akkor /spacecrafts/list, egyébként 
 POST /register - adatok validálása, ha jó, akkor /spacecrafts/list, egyébként ugyanitt hiba
 POST /logout - kiléptetés, index.html-re ("")
 
-GET /spacecrafts/list
-GET /spacecrafts/grid 
+GET /spacecrafts/list - list.html 
+GET /spacecrafts/grid - grid.html
 
-GET /spacecrafts
-GET /spacecraft/:spacecraftid
-GET /spacecraft/details/:spacecraftid
-GET /spacecrafts/new
+GET /spacecrafts - visszaadja az összes hajót
+GET /spacecraft/:spacecraftid - visszaad egy adott id-jű hajót
+GET /spacecraft/details/:spacecraftid - details.html adott id-val
+GET /spacecrafts/new - addspacecraft.html
 POST /spacecrafts/new
-GET /spacecraft/:spacecraftid/edit
+GET /spacecraft/:spacecraftid/edit - addspacecraft.html
 POST /spacecraft/:spacecraftid/edit
 GET (DELETE kéne) /spacecraft/:spacecraftid/delete
 
-GET /comments/:spacecraftid 
-GET /comment/:spacecraftid/new 
+GET /comments/:spacecraftid - adott hajóhoz tartozó össze komment
+GET /comment/:spacecraftid/new - addcomment.html
 POST /comment/:spacecraftid/new 
-GET /comment/:spacecraftid/:commentid/edit
+GET /comment/:spacecraftid/:commentid/edit - addcomment.html
 POST /comment/:spacecraftid/:commentid/edit
 GET (DELETE kéne) /comment/:spacecraftid/:commentid/delete
 
-GET /compare?ida=valami&idb=valamimas
+GET /compare?ida=valami&idb=valamimas - compare.html
 
-GET/users/:userid/spacecrafts
+GET /users/:userid
+GET /users/:username
+GET /users/:userid/spacecrafts 
