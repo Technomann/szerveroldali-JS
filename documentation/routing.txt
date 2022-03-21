@@ -1,27 +1,77 @@
 
 authMW
 renderMW
+404MW
+checkLoginMW
+checkRegisterMW
+logoutMW
+getSpacecraftsMW
+sendNewPasswordMW
+getUserByEmailMW
+errorHandlerMW
+getSpacecraftMW
+saveSpacecraftMW - ez ha kell redirectel
+deleteSpacecraftMW
 
 
 "" - index.html
-POST /login - adatok validálása, ha jó, akkor /spacecrafts/list, egyébként ugyanitt hiba
-POST /register - adatok validálása, ha jó, akkor /spacecrafts/list, egyébként ugyanitt hiba
-POST /logout - kiléptetés, index.html-re ("")
+    renderMW(index.html)
+
+POST /login - adatok validálása, ha jó, akkor redirect /spacecrafts/list, egyébként ugyanitt hiba
+    checkLoginMW
+    
+POST /register - adatok validálása, ha jó, akkor redirect /spacecrafts/list, egyébként ugyanitt hiba
+    checkRegisterMW
+
+POST /logout - kiléptetés, redirect ""-re
+    logoutMW
+
 GET /forgot - forgotpasword.html
+    getUserByEmailMW
+    sendNewPasswordMW
+
 GET /error?hiba=valamihiba
-get /404 - notfound.html
+    errorHandlerMW
+    renderMW(error.html)
 
-GET /spacecrafts/list - list.html 
-GET /spacecrafts/grid - grid.html
+GET /404 - notfound.html
+    renderMW(404.html)
 
-GET /spacecrafts - visszaadja az összes hajót
-GET /spacecraft/:spacecraftid - visszaad egy adott id-jű hajót
-GET /spacecraft/details/:spacecraftid - details.html adott id-val
-GET /spacecrafts/new - addspacecraft.html
-POST /spacecrafts/new
-GET /spacecraft/:spacecraftid/edit - addspacecraft.html
-POST /spacecraft/:spacecraftid/edit
+GET /spacecrafts/list 
+    authMW
+    getSpacecraftsMW
+    renderMW(list.html)
+
+GET /spacecrafts/grid 
+    authMW
+    getSpacecraftsMW
+    renderMW(grid.html)
+
+-----GET /spacecrafts - visszaadja az összes hajót
+
+GET /spacecraft/:spacecraftid
+    authMW
+    getSpacecraftMW
+    renderMW(details.html)
+
+-----GET /spacecraft/details/:spacecraftid - details.html adott id-val
+
+
+GET, POST /spacecrafts/new 
+    authMW
+    saveSpacecraftMW
+    renderMW(addspacecraft.html) - ha post jött, akkor már beletesszük az adatot a form-ba
+
+GET, POST /spacecraft/:spacecraftid/edit 
+    authMW
+    getSpacecraftMW
+    saveSpacecraftMW
+    renderMW(addspacecraft.html)
+
 GET (DELETE kéne) /spacecraft/:spacecraftid/delete
+    authMW
+    getSpacecraftMW
+    deleteSpacecraftMW
 
 GET /comments/:spacecraftid - adott hajóhoz tartozó össze komment
 GET /comment/:spacecraftid/new - addcomment.html
