@@ -107,7 +107,7 @@ nav ul{
     list-style-type: none;
     padding-left: 0;
     margin-bottom: 0;
-    height: 60px;
+    height: 100%;
     align-items: center;
 }
 
@@ -132,7 +132,7 @@ nav a.compare, nav a.listing{
     color: #a7a7a7;
 }
 
-/*nav a.login-register,*/ #logged-in-user, #logout-button{
+#logged-in-user, #logout-button, #login-register{
     background-color: #a7a7a7;
     color: #000;
 }
@@ -148,7 +148,7 @@ nav a.compare, nav a.listing{
     border: 1px solid #000;
 }
 
-nav a:hover, #logged-in-user:hover, #logout-button:hover{
+nav a:hover, #logged-in-user:hover, #logout-button:hover, #login-register:hover{
     background-color: #e34c3c;
     color: #000;
 }
@@ -609,3 +609,11 @@ input[type=number] {
 }
 
 /* GRID.HTML END */
+
+/* ERROR.HTML */
+
+#error h1, #error h3, #error h4{
+    color: #a7a7a7;
+}
+
+/* ERROR.HTML END */

@@ -1,7 +1,15 @@
+
+authMW
+renderMW
+
+
 "" - index.html
 POST /login - adatok validálása, ha jó, akkor /spacecrafts/list, egyébként ugyanitt hiba
 POST /register - adatok validálása, ha jó, akkor /spacecrafts/list, egyébként ugyanitt hiba
 POST /logout - kiléptetés, index.html-re ("")
+GET /forgot - forgotpasword.html
+GET /error?hiba=valamihiba
+get /404 - notfound.html
 
 GET /spacecrafts/list - list.html 
 GET /spacecrafts/grid - grid.html
@@ -26,4 +34,5 @@ GET /compare?ida=valami&idb=valamimas - compare.html
 
 GET /users/:userid
 GET /users/:username
+GET /users/:email
 GET /users/:userid/spacecrafts 
