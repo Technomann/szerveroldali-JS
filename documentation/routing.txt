@@ -1,39 +1,50 @@
 
+//AUTH
 authMW
-renderMW
-404MW
 checkLoginMW
 checkRegisterMW
+saveRegistrationMW
 logoutMW
-getSpacecraftsMW
 sendNewPasswordMW
+
+//USERS
 getUserByEmailMW
+
+//UTILITY
+renderMW
+
+//ERROR
+404MW
 errorHandlerMW
+
+//SPACECRAFT
+getSpacecraftsMW
 getSpacecraftMW
-saveSpacecraftMW - ez ha kell redirectel
+saveSpacecraftMW
 deleteSpacecraftMW
 getSpacecraftsToCompareMW
+
+//COMMENT
 getCommentsMW
 getCommentMW
-deleteCommentMW
 saveCommentMW
-saveUserMW
-getUserbyIdMW
-getUsersToCompareMW
+deleteCommentMW
+
+
 
 GET "", "/" - index.html
     renderMW(index.html)
 
-POST /login - adatok validálása, ha jó, akkor redirect /spacecrafts/list, egyébként ugyanitt hiba
+POST /login
     checkLoginMW - redirect
     renderMW(index.html (login))
     
-POST /register - adatok validálása, ha jó, akkor redirect /spacecrafts/list, egyébként ugyanitt hiba
+POST /register
     checkRegisterMW
     saveRegistrationMW - redirect
     renderMW(index.html (register))
 
-POST /logout - kiléptetés, redirect ""-re
+POST /logout
     logoutMW
 
 POST /forgot 
@@ -47,20 +58,14 @@ GET /error?hiba=valamihiba
 GET /404 - notfound.html
     renderMW(404.html)
 
-GET /spacecrafts/list 
+GET /spacecrafts/list, /spacecrafts/grid 
     authMW
     getSpacecraftsMW
-    renderMW(list.html)
-
-GET /spacecrafts/grid 
-    authMW
-    getSpacecraftsMW
-    renderMW(grid.html)
+    renderMW(list.html VAGY grid.html (URL-től függ))
 
 GET /spacecraft/:spacecraftid
     authMW
     getSpacecraftMW
-    getUserbyIdMW
     renderMW(details.html)
 
 GET, POST /spacecrafts/new 
@@ -89,7 +94,6 @@ GET, POST /comment/:spacecraftid/new
     saveCommentMW
     renderMW(addcomment.html)
 
-
 GET, POST /comment/:spacecraftid/:commentid/edit - addcomment.html
     authMW
     getSpacecraftMW
@@ -106,5 +110,4 @@ DELETE /comment/:spacecraftid/:commentid/delete
 GET /compare?ida=valami&idb=valamimas 
     authMW
     getSpacecraftsToCompareMW
-    getUsersToCompareMW
     renderMW(compare.html)
