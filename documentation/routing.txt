@@ -12,23 +12,33 @@ errorHandlerMW
 getSpacecraftMW
 saveSpacecraftMW - ez ha kell redirectel
 deleteSpacecraftMW
+getSpacecraftsToCompareMW
+getCommentsMW
+getCommentMW
+deleteCommentMW
+saveCommentMW
+saveUserMW
+getUserbyIdMW
+getUsersToCompareMW
 
-
-"" - index.html
+GET "", "/" - index.html
     renderMW(index.html)
 
 POST /login - adatok validálása, ha jó, akkor redirect /spacecrafts/list, egyébként ugyanitt hiba
-    checkLoginMW
+    checkLoginMW - redirect
+    renderMW(index.html (login))
     
 POST /register - adatok validálása, ha jó, akkor redirect /spacecrafts/list, egyébként ugyanitt hiba
     checkRegisterMW
+    saveRegistrationMW - redirect
+    renderMW(index.html (register))
 
 POST /logout - kiléptetés, redirect ""-re
     logoutMW
 
-GET /forgot - forgotpasword.html
+POST /forgot 
     getUserByEmailMW
-    sendNewPasswordMW
+    sendNewPasswordMW - redirect index.html
 
 GET /error?hiba=valamihiba
     errorHandlerMW
@@ -47,15 +57,11 @@ GET /spacecrafts/grid
     getSpacecraftsMW
     renderMW(grid.html)
 
------GET /spacecrafts - visszaadja az összes hajót
-
 GET /spacecraft/:spacecraftid
     authMW
     getSpacecraftMW
+    getUserbyIdMW
     renderMW(details.html)
-
------GET /spacecraft/details/:spacecraftid - details.html adott id-val
-
 
 GET, POST /spacecrafts/new 
     authMW
@@ -68,21 +74,37 @@ GET, POST /spacecraft/:spacecraftid/edit
     saveSpacecraftMW
     renderMW(addspacecraft.html)
 
-GET (DELETE kéne) /spacecraft/:spacecraftid/delete
+DELETE /spacecraft/:spacecraftid/delete
     authMW
     getSpacecraftMW
     deleteSpacecraftMW
 
-GET /comments/:spacecraftid - adott hajóhoz tartozó össze komment
-GET /comment/:spacecraftid/new - addcomment.html
-POST /comment/:spacecraftid/new 
-GET /comment/:spacecraftid/:commentid/edit - addcomment.html
-POST /comment/:spacecraftid/:commentid/edit
-GET (DELETE kéne) /comment/:spacecraftid/:commentid/delete
+GET /comments/:spacecraftid - adott hajóhoz tartozó összes komment
+    authMW
+    getSpacecraftMW
+    getCommentsMW - redirect
 
-GET /compare?ida=valami&idb=valamimas - compare.html
+GET, POST /comment/:spacecraftid/new 
+    authMW
+    saveCommentMW
+    renderMW(addcomment.html)
 
-GET /users/:userid
-GET /users/:username
-GET /users/:email
-GET /users/:userid/spacecrafts 
+
+GET, POST /comment/:spacecraftid/:commentid/edit - addcomment.html
+    authMW
+    getSpacecraftMW
+    getCommentMW
+    saveCommentMW
+    renderMW(addcomment.html)
+
+DELETE /comment/:spacecraftid/:commentid/delete
+    authMW
+    getSpacecraftMW -- nem muszáj, de safety
+    getCommentMW
+    deleteCommentMW
+
+GET /compare?ida=valami&idb=valamimas 
+    authMW
+    getSpacecraftsToCompareMW
+    getUsersToCompareMW
+    renderMW(compare.html)
