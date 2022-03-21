@@ -9,6 +9,7 @@ sendNewPasswordMW
 
 //USERS
 getUserByEmailMW
+checkSpacecraftOwnerMW
 
 //UTILITY
 renderMW
@@ -63,9 +64,11 @@ GET /spacecrafts/list, /spacecrafts/grid
     getSpacecraftsMW
     renderMW(list.html VAGY grid.html (URL-től függ))
 
-GET /spacecraft/:spacecraftid
+GET /spacecraft/:spacecraftid/details
     authMW
     getSpacecraftMW
+    getCommentsMW
+    checkSpacecraftOwnerMW
     renderMW(details.html)
 
 GET, POST /spacecrafts/new 
@@ -84,10 +87,10 @@ DELETE /spacecraft/:spacecraftid/delete
     getSpacecraftMW
     deleteSpacecraftMW
 
-GET /comments/:spacecraftid - adott hajóhoz tartozó összes komment
+/*GET /comments/:spacecraftid - adott hajóhoz tartozó összes komment
     authMW
     getSpacecraftMW
-    getCommentsMW - redirect
+    getCommentsMW - redirect*/
 
 GET, POST /comment/:spacecraftid/new 
     authMW
@@ -110,4 +113,6 @@ DELETE /comment/:spacecraftid/:commentid/delete
 GET /compare?ida=valami&idb=valamimas 
     authMW
     getSpacecraftsToCompareMW
+    getCommentsMW
+    getUsersToCompareMW
     renderMW(compare.html)

@@ -1,6 +1,6 @@
 
 /**
- * Get all comments for specific spacecraft or spacecrafts by spacecraftId and puts them into locals and calls next
+ * Gets the two users for comparison then calls next
  */
  const reuireOption = require('../utility/requireOption');
 
