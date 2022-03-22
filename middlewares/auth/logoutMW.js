@@ -1,6 +1,6 @@
 
 /**
- * Logs the user out (delete session data??) and redirets to /
+ * Logs the user out (delete session data??) and redirects to /
  */
  const reuireOption = require('../utility/requireOption');
 

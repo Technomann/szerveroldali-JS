@@ -1,6 +1,7 @@
 
 /**
- * Saves newly added spacecraft into db
+ * If POST: saves new spacecraft into db, if something is wrong, puts error into locals and calls next
+ * If GET: calls next
  */
  const reuireOption = require('../utility/requireOption');
 
