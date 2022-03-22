@@ -8,14 +8,17 @@ app.set('view engine', 'ejs');
 //UTILITY (helmet, bodyparser, express-session)//
 require('./routes/utility')(app);
 
+//AUTH
+require('./routes/auth')(app);
+
 //SPACECRAFT
-require('./routes/spaceraft')(app);
+require('./routes/spacecraft')(app);
 
 //COMMENT
 require('./routes/comment')(app);
 
 //USERS
-require('./routes/users')(app);
+//require('./routes/users')(app);
 
 //404 and standard error
 require('./routes/error')(app);

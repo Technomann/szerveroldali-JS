@@ -1,6 +1,6 @@
 const authMW = require('../middlewares/auth/authMW');
 const getSpacecraftMW = require('../middlewares/spacecraft/getSpacecraftMW');
-const deleteCommentMW = require('../middlewares/comment/deleteCommentsMW');
+const deleteCommentMW = require('../middlewares/comment/deleteCommentMW');
 const getCommentMW = require('../middlewares/comment/getCommentMW');
 const saveCommentMW = require('../middlewares/comment/saveCommentMW');
 const renderMW = require('../middlewares/utility/renderMW');
