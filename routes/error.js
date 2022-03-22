@@ -10,6 +10,13 @@ module.exports = function(app){
     };
 
     /**
+     * Opening page - must be at the bottom, before errors. This position fits
+     */
+    app.use('/', 
+    renderMW(objectRepository, 'index')
+    );
+
+    /**
      * Error 
      */
     app.get('/error/*',

@@ -46,13 +46,6 @@ module.exports = function(app){
     });
 
     /**
-     * Opening page
-     */
-    app.use('/', 
-        renderMW(objectRepository, 'index')
-    );
-
-    /**
      * Homepage
      */
     app.get('/homepage',
