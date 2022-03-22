@@ -1,8 +1,14 @@
 const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const renderMW = require('../middlewares/utility/renderMW');
+const userModel = {};
 
 module.exports = function(app){
+
+    const objectRepository = {
+        userModel: userModel
+    };
 
     /**
      * Session above all
@@ -38,5 +44,12 @@ module.exports = function(app){
 
         return next();
     });
+
+    /**
+     * Homepage
+     */
+    app.use('/', 
+        renderMW(objectRepository, 'index')
+    );
 
 };

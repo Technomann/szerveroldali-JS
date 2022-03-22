@@ -4,8 +4,8 @@
  */
  const reuireOption = require('../utility/requireOption');
 
- module.exports = function(objectRepository){
-     return function(req, res, next){
-         next();
+ module.exports = function(objectRepository, viewName){
+     return function(req, res){
+         res.end('Render: ', viewName);
      };
  };

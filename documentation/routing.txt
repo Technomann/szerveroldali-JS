@@ -33,84 +33,84 @@ deleteCommentMW
 
 
 
-GET "", "/" - index.html
+--GET "", "/" - index.html
     renderMW(index.html)
 
-POST /login
+--POST /login
     checkLoginMW - redirect
     renderMW(index.html (login))
     
-POST /register
+--POST /register
     checkRegisterMW
     saveRegistrationMW - redirect
     renderMW(index.html (register))
 
-POST /logout
+--POST /logout
     logoutMW
 
-POST /forgot 
+--POST /forgot 
     getUserByEmailMW
     sendNewPasswordMW - redirect index.html
 
-GET /error?hiba=valamihiba
+--GET /error?hiba=valamihiba
     errorHandlerMW
     renderMW(error.html)
 
-GET /404 - notfound.html
+--GET /404 - notfound.html
     renderMW(404.html)
 
-GET /spacecrafts/list, /spacecrafts/grid 
+--GET /spacecrafts/list, /spacecrafts/grid 
     authMW
     getSpacecraftsMW
     renderMW(list.html VAGY grid.html (URL-től függ))
 
-GET /spacecraft/:spacecraftid/details
+--GET /spacecraft/:spacecraftid/details
     authMW
     getSpacecraftMW
     getCommentsMW
     checkSpacecraftOwnerMW
     renderMW(details.html)
 
-GET, POST /spacecrafts/new 
+--GET, POST /spacecrafts/new 
     authMW
     saveSpacecraftMW
     renderMW(addspacecraft.html) - ha post jött, akkor már beletesszük az adatot a form-ba
 
-GET, POST /spacecraft/:spacecraftid/edit 
+--GET, POST /spacecraft/:spacecraftid/edit 
     authMW
     getSpacecraftMW
     saveSpacecraftMW
     renderMW(addspacecraft.html)
 
-DELETE /spacecraft/:spacecraftid/delete
+--DELETE /spacecraft/:spacecraftid/delete
     authMW
     getSpacecraftMW
     deleteSpacecraftMW
 
-/*GET /comments/:spacecraftid - adott hajóhoz tartozó összes komment
+--------GET /comments/:spacecraftid - adott hajóhoz tartozó összes komment
     authMW
     getSpacecraftMW
-    getCommentsMW - redirect*/
+    getCommentsMW - redirect--------
 
-GET, POST /comment/:spacecraftid/new 
+--GET, POST /comment/:spacecraftid/new 
     authMW
     saveCommentMW
     renderMW(addcomment.html)
 
-GET, POST /comment/:spacecraftid/:commentid/edit - addcomment.html
+--GET, POST /comment/:spacecraftid/:commentid/edit - addcomment.html
     authMW
     getSpacecraftMW
     getCommentMW
     saveCommentMW
     renderMW(addcomment.html)
 
-DELETE /comment/:spacecraftid/:commentid/delete
+--DELETE /comment/:spacecraftid/:commentid/delete
     authMW
     getSpacecraftMW -- nem muszáj, de safety
     getCommentMW
     deleteCommentMW
 
-GET /compare?ida=valami&idb=valamimas 
+--GET /compare?ida=valami&idb=valamimas 
     authMW
     getSpacecraftsToCompareMW
     getCommentsMW
