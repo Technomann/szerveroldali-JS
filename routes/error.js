@@ -10,13 +10,6 @@ module.exports = function(app){
     };
 
     /**
-     * Opening page - must be at the bottom, before errors. This position fits
-     */
-    app.use('/', 
-    renderMW(objectRepository, 'index')
-    );
-
-    /**
      * Error 
      */
     app.get('/error/*',
@@ -27,9 +20,16 @@ module.exports = function(app){
     /**
      * Handle not found content requests
      */
-    app.use('*', 
+    app.use('/*', 
         fofMW(objectRepository), 
         renderMW(objectRepository, '404')
+    );
+
+    /**
+     * Opening page - must be at the bottom, before errors. This position fits
+     */
+    app.use('/', 
+        renderMW(objectRepository, 'index')
     );
 
     /**

@@ -1,6 +1,7 @@
 const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const authMW = require('../middlewares/auth/authMW');
 const renderMW = require('../middlewares/utility/renderMW');
 const userModel = {};
 

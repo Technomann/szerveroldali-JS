@@ -1,11 +1,13 @@
 
 /**
- * Puts wrong url into locals and calls next
+ * Puts wrong url into locals and and redirects to /404
  */
  const reuireOption = require('../utility/requireOption');
 
  module.exports = function(objectRepository){
      return function(req, res, next){
-         next();
+        res.locals.badUrl = req.originalUrl;
+
+        next();
      };
  };
