@@ -18,18 +18,18 @@ module.exports = function(app){
     );
 
     /**
-     * Handle not found content requests
+     * Opening page - must be at the bottom, before errors. This position fits
      */
-    app.use('/*', 
-        fofMW(objectRepository), 
-        renderMW(objectRepository, '404')
+    app.get('/', 
+        renderMW(objectRepository, 'index')
     );
 
     /**
-     * Opening page - must be at the bottom, before errors. This position fits
+     * Handle not found content requests
      */
-    app.use('/', 
-        renderMW(objectRepository, 'index')
+    app.get('*', 
+        fofMW(objectRepository), 
+        renderMW(objectRepository, '404')
     );
 
     /**
