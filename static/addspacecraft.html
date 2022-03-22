@@ -45,7 +45,7 @@
             <div class="row">
                 <div class="col-12 center">
                     <div class="input-container">
-                        <form>
+                        <form method="post" enctype="multipart/form-data">
                             <div class="input-field">
                                 <input id="spacecraft-name" type="text" required >
                                 <label for="spacecraft-name">Name</label>
@@ -95,7 +95,7 @@
                                 <img id="upload-photo" src="assets/file_upload.png">
                                 <span id="upload-text">Select an image</span>
                             </label>
-                            <input id="upload-input" type="file" accept="image/png, image/jpeg, image/webp, image/gif" required>
+                            <input id="upload-input" type="file" name="spacecraftpic" accept="image/png, image/jpeg, image/webp, image/gif" required>
                             <input class="btn btn-darks size-100" type="submit" value="Add">
                         </form>
                     </div>

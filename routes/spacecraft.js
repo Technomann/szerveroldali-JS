@@ -8,6 +8,8 @@ const saveSpacecraftMW = require('../middlewares/spacecraft/saveSpacecraftMW');
 const deleteSpacecraftMW = require('../middlewares/spacecraft/deleteSpacecraftMW');
 const getSpacecraftsToCompareMW = require('../middlewares/spacecraft/getSpacecraftsToCompareMW');
 const getUsersToCompareMW = require('../middlewares/users/getUsersToCompareMW');
+const multer = require('multer');
+const upload = multer({dest: '../static/assets/spacecrafts/'});
 const userModel = {};
 
 module.exports = function(app){
@@ -46,9 +48,18 @@ module.exports = function(app){
     );
 
     /**
-     * Create spacecraft
+     * Create spacecraft - render
      */
-    app.use('/spacecrafts/new',
+    app.get('/spacecrafts/new',
+        authMW(objectRepository),
+        renderMW(objectRepository, 'addspacecraft')
+    );
+
+    /**
+     * Create spacecraft - POST with data
+     */
+    app.post('/spacecrafts/new', 
+        upload.single('spacectaftpic'),
         authMW(objectRepository),
         saveSpacecraftMW(objectRepository),
         renderMW(objectRepository, 'addspacecraft')
@@ -76,7 +87,7 @@ module.exports = function(app){
     /**
      * Compare spacecrafts
      */
-    app.get('/compare?:ida=*&:idb=*',
+    app.get('/compare/:idA/:idB',
         authMW(objectRepository),
         getSpacecraftsToCompareMW(objectRepository),
         getCommentsMW(objectRepository),

@@ -5,6 +5,8 @@ const saveRegistrationMW = require('../middlewares/auth/saveRegistrationMW');
 const logoutMW = require('../middlewares/auth/logoutMW');
 const getUserByEmailMW = require('../middlewares/users/getUserByEmailMW');
 const sendNewPasswordMW = require('../middlewares/auth/sendNewPasswordMW');
+const multer = require('multer');
+const upload = multer({dest: '../static/assets/users/'}); //MEGADNI!
 const userModel = {};
 
 module.exports = function(app){
@@ -25,6 +27,7 @@ module.exports = function(app){
      * Register
      */
     app.post('/register',
+        upload.single('regpic'),
         checkRegistrationMW(objectRepository),
         saveRegistrationMW(objectRepository),
         renderMW(objectRepository, 'register')

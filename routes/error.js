@@ -12,7 +12,7 @@ module.exports = function(app){
     /**
      * Error 
      */
-    app.get('/error?:hiba=*',
+    app.get('/error/*',
         errorHandlerMW(objectRepository),
         renderMW(objectRepository, 'error')
     );
