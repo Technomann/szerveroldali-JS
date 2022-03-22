@@ -46,10 +46,18 @@ module.exports = function(app){
     });
 
     /**
-     * Homepage
+     * Opening page
      */
     app.use('/', 
         renderMW(objectRepository, 'index')
+    );
+
+    /**
+     * Homepage
+     */
+    app.get('/homepage',
+        authMW(objectRepository),
+        renderMW(objectRepository, 'homepage')
     );
 
 };
