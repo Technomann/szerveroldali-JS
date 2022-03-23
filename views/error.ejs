@@ -1,12 +1,13 @@
-<%- include ('head', {pagetitle: 404, id: 'error'}) %>
+
+<%- include('head', {title: 'Error', id: 'error'}) %>
 
 <nav>
     <ul class="flexbox">
-        <%- include ('logo') %>
+        <%- include('logo') %> 
     </ul>
 </nav>
 
-<%- include ('title-container', {title: '404'}) %>
+<%- include('title-container', {title: 'Error!'}) %> 
 
 <main class="content">
     <div class="container">
@@ -19,12 +20,14 @@
         </div>
         <div class="row">
             <div class="col-12 center">
-                <h1>Whoops! Error 404 occured.</h1>
-                <h3>The required content does not exist: <%= badUrl %></h3>
+                <h1>Whoops! Some error happened!</h1>
+                <h3>Error code: <%= errorCode %></h3>
+                <h4>Problem: <%= errorProblem %></h4>
             </div>
         </div>
     </div>
 </main>
 
-<%- include ('footer') %> 
-<%- include ('closing') %>
+<%- include('footer') %>
+
+<%- include('closing') %>

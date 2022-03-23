@@ -8,5 +8,8 @@
         
         <link rel="stylesheet" href="/design/bootstrap/bootstrap.min.css">
         <link rel="stylesheet" href="/design/css/custom.css">
+        <% if(typeof extraHead !== 'undefined') { %>
+            <%- extraHead %> <%# Not sure, if it should be - or =, becuase here we paste script. Might be - is the right %> 
+        <% } %> 
     </head>
     <body id="<%= id %>">

@@ -15,7 +15,7 @@ module.exports = function(app){
     /**
     * Create new comment
     */
-    app.use('/comments/:spacecraftid/new', 
+    app.all('/comments/:spacecraftid/new', 
         authMW(objectRepository),
         saveCommentMW(objectRepository),
         renderMW(objectRepository, 'addcomment')
@@ -24,7 +24,7 @@ module.exports = function(app){
     /**
      * Edit comment
      */
-    app.use('/comment/:spacecraftid/:commentid/edit',
+    app.all('/comment/:spacecraftid/:commentid/edit',
         authMW(objectRepository),
         getSpacecraftMW(objectRepository),
         getCommentMW(objectRepository),

@@ -394,6 +394,10 @@ label[for="spacecraft-photo"]{
     display: none;
 }
 
+.cyan{
+    color: cyan;
+}
+
 /* MODAL */
 #modal-container {
     display: none;

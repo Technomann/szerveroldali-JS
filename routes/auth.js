@@ -43,8 +43,9 @@ module.exports = function(app){
     /**
      * Forgot password
      */
-    app.post('/forgot',
+    app.all('/forgot',
         getUserByEmailMW(objectRepository),
-        sendNewPasswordMW(objectRepository)
+        sendNewPasswordMW(objectRepository),
+        renderMW(objectRepository, 'forgotpass')
     );
 };

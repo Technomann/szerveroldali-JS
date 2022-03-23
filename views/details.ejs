@@ -1,0 +1,163 @@
+
+<%- include('head', {title: 'Details', id: 'details'}) %>
+
+<nav>
+    <ul class="flexbox">
+        <%- include('logo') %> 
+        <%- include('logged-in', {loggedInUser: loggedInUser}) %>
+        <%- include('logout') %>  
+    </ul>
+</nav>
+
+<%- include('title-container', {title: 'Spacecraft details'}) %> 
+
+<main class="content">
+    <div class="container">
+        <div class="row buttons">
+            <div class="col-12">
+                <a class="btn btn-darks" href="list.html">
+                    Back to listing
+                </a>
+                <a class="btn btn-darks" href="addcomment.html">
+                    Rate or comment
+                </a>
+
+                <% if(spacecraft.user.username === loggedInUser.username) { %>
+                    <a class="btn btn-darks" href="#">
+                        Edit
+                    </a>
+                    <a class="btn btn-darks" href="#">
+                        Delete
+                    </a>
+                <% } %> 
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-5">
+                <div class="new-layer">
+                    <img class="details-img" src="assets/spacecrafts/laat.webp">
+                    <span class="spacecraft-title">
+                        LA-AT
+                    </span>
+                    <span class="spacecraft-type">
+                        , gunship
+                    </span>
+                </div>
+                <p class="user-owner">added by @admin</p>
+            </div>
+            <div class="col-7">
+                <table>
+                    <tr>
+                        <th>Property</th>
+                        <th>Value</th>
+                    </tr>
+                    <tr class="details-table-row gray-row">
+                        <td>
+                            <p>Manufacturer</p> 
+                        </td>
+                        <td>
+                            <p>Rothana Heavy Engineerin</p> 
+                        </td>
+                    </tr>
+                    <tr class="details-table-row gray-row">
+                        <td>
+                            <p>Price</p> 
+                        </td>
+                        <td>
+                            <p>$200 000</p> 
+                        </td>
+                    </tr>
+                    <tr class="details-table-row gray-row">
+                        <td>
+                            <p>Passengers</p> 
+                        </td>
+                        <td>
+                            <p>20 + 5 additional</p> 
+                        </td>
+                    </tr>
+                    <tr class="details-table-row gray-row">
+                        <td>
+                            <p>Type</p> 
+                        </td>
+                        <td>
+                            <p>gunship</p> 
+                        </td>
+                    </tr>
+                    <tr class="details-table-row gray-row">
+                        <td>
+                            <p>Length</p> 
+                        </td>
+                        <td>
+                            <p>17.69 m</p> 
+                        </td>
+                    </tr>
+                    <tr class="details-table-row gray-row">
+                        <td>
+                            <p>Width</p> 
+                        </td>
+                        <td>
+                            <p>17 m</p> 
+                        </td>
+                    </tr>
+                    <tr class="details-table-row gray-row">
+                        <td>
+                            <p>Engine</p> 
+                        </td>
+                        <td>
+                            <p>Repulsorlift arrays</p> 
+                        </td>
+                    </tr>
+                    <tr class="details-table-row gray-row">
+                        <td>
+                            <p>Hyperdrive</p> 
+                        </td>
+                        <td>
+                            <p>none</p> 
+                        </td>
+                    </tr>
+                    <tr class="details-table-row gray-row">
+                        <td>
+                            <p>Cargo capacity</p> 
+                        </td>
+                        <td>
+                            <p>30 kg</p> 
+                        </td>
+                    </tr>
+                    <tr class="details-table-row gray-row">
+                        <td>
+                            <p>Maximum velocity</p> 
+                        </td>
+                        <td>
+                            <p>620 km/h</p> 
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 comments">
+                <div class="comment">
+                    <h3 class="comment-title">
+                        Very best spacecraft in whole star wars universe!!! 100% recommended!
+                    </h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <h4 class="comment-date">2022.03.07.</h4>
+                </div>
+                <div class="comment">
+                    <h3 class="comment-title">
+                        Very best spacecraft in whole star wars universe!!! 100% recommended!
+                    </h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <h4 class="comment-date">2022.03.07.</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<%- include('footer') %> 
+
+<script src="/js/logout.js"></script>
+
+<%- include('closing') %> 

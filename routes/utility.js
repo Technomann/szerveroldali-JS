@@ -28,7 +28,7 @@ module.exports = function(app){
      */
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({
-        urlencoded: true
+        extended: true
     }));
 
     /**

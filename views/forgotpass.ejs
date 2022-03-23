@@ -1,0 +1,49 @@
+
+<%- include('head', {title: 'Forgot password', id:'forgot'}) %>
+
+<nav>
+    <ul class="flexbox">
+        <%- include('logo') %>
+        <li class="m-left-auto">
+            <a id="login-register" href="/">
+                Login or register
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<%- include('title-container', {title: 'Forgot password?'}) %>
+
+<main class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 center">
+                <div id="forgot-container" class="input-container">
+                    <% if(typeof noSuchEmail !== 'undefined') { %>  
+                        <div class="error-message">
+                            <p class="cyan">There is no such email registered!</p>
+                        </div>
+                    <% } %>
+                    <% if(typeof wrongEmailFormat !== 'undefined') { %>  
+                        <div class="error-message">
+                            <p class="cyan">Wrong email format!</p>
+                        </div>
+                    <% } %>
+                    <form id="forgot-form" method="post" action="/forgot">
+                        <div class="input-field">
+                            <input id="forgot-email" type="email" required >
+                            <label for="forgot-email">Registered e-mail address</label>
+                        </div>
+                        <div class="center">
+                            <input class="btn btn-darks size-80" type="submit" value="Új jelszó kérése">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<%- include('footer') %>
+
+<%- include('closing') %> 
