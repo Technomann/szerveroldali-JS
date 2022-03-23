@@ -9,7 +9,7 @@ const deleteSpacecraftMW = require('../middlewares/spacecraft/deleteSpacecraftMW
 const getSpacecraftsToCompareMW = require('../middlewares/spacecraft/getSpacecraftsToCompareMW');
 const getUsersToCompareMW = require('../middlewares/users/getUsersToCompareMW');
 const multer = require('multer');
-const upload = multer({dest: '../static/assets/spacecrafts/'});
+const upload = multer({dest: './static/assets/spacecrafts/'});
 const userModel = {};
 
 module.exports = function(app){

@@ -6,7 +6,7 @@ const logoutMW = require('../middlewares/auth/logoutMW');
 const getUserByEmailMW = require('../middlewares/users/getUserByEmailMW');
 const sendNewPasswordMW = require('../middlewares/auth/sendNewPasswordMW');
 const multer = require('multer');
-const upload = multer({dest: '../static/assets/users/'}); //MEGADNI!
+const upload = multer({dest: './static/assets/users/'});
 const userModel = {};
 
 module.exports = function(app){
