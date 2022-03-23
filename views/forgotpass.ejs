@@ -19,16 +19,13 @@
         <div class="row">
             <div class="col-12 center">
                 <div id="forgot-container" class="input-container">
-                    <% if(typeof noSuchEmail !== 'undefined') { %>  
+                    
+                    <% if(typeof errorMessage !== 'undefined') { %>  
                         <div class="error-message">
-                            <p class="cyan">There is no such email registered!</p>
+                            <p class="cyan"><%= errorMessage %></p>
                         </div>
                     <% } %>
-                    <% if(typeof wrongEmailFormat !== 'undefined') { %>  
-                        <div class="error-message">
-                            <p class="cyan">Wrong email format!</p>
-                        </div>
-                    <% } %>
+
                     <form id="forgot-form" method="post" action="/forgot">
                         <div class="input-field">
                             <input id="forgot-email" type="email" required >

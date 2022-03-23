@@ -68,7 +68,7 @@ module.exports = function(app){
     /**
      * Edit spacecraft
      */
-    app.use('spacecraft/:spacecraftid/edit',
+    app.all('/spacecraft/:spacecraftid/edit',
         authMW(objectRepository),
         getSpacecraftMW(objectRepository),
         saveSpacecraftMW(objectRepository),
@@ -78,7 +78,7 @@ module.exports = function(app){
     /**
      * Delete spacecraft
      */
-    app.delete('/spacecraft/:spacecraftid/delete',
+    app.get('/spacecraft/:spacecraftid/delete',
         authMW(objectRepository),
         getSpacecraftMW(objectRepository),
         deleteSpacecraftMW(objectRepository)

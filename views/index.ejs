@@ -24,6 +24,13 @@
         <div class="row">
             <div class="col-12 center">
                 <div id="login-container" class="input-container">
+                    
+                    <% if(typeof errorMessage !== 'undefined') { %>  
+                        <div class="error-message">
+                            <p class="cyan"><%= errorMessage %></p>
+                        </div>
+                    <% } %>
+
                     <form id="login-form" method="post" action="/login">
                         <div class="input-field">
                             <input id="username" type="text" required >

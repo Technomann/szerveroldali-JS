@@ -15,18 +15,18 @@
     <div class="container">
         <div class="row buttons">
             <div class="col-12">
-                <a class="btn btn-darks" href="list.html">
+                <a class="btn btn-darks" href="/list">
                     Back to listing
                 </a>
-                <a class="btn btn-darks" href="addcomment.html">
+                <a class="btn btn-darks" href="/comments/<%= spacecraft._id %>/new">
                     Rate or comment
                 </a>
 
                 <% if(spacecraft.user.username === loggedInUser.username) { %>
-                    <a class="btn btn-darks" href="#">
+                    <a class="btn btn-darks" href="/spacecraft/<%= spacecraft._id %>/edit">
                         Edit
                     </a>
-                    <a class="btn btn-darks" href="#">
+                    <a class="btn btn-darks" href="/spacecraft/<%= spacecraft._id %>/delete">
                         Delete
                     </a>
                 <% } %> 
@@ -36,15 +36,15 @@
         <div class="row">
             <div class="col-5">
                 <div class="new-layer">
-                    <img class="details-img" src="assets/spacecrafts/laat.webp">
+                    <img class="details-img" src="/assets/spacecrafts/<%= spacecraft.imageName %>">
                     <span class="spacecraft-title">
-                        LA-AT
+                        <%= spacecraft.name %> 
                     </span>
                     <span class="spacecraft-type">
-                        , gunship
+                        , <%= spacecraft.type %>
                     </span>
                 </div>
-                <p class="user-owner">added by @admin</p>
+                <p class="user-owner">added by <%= spacecraft.author %></p>
             </div>
             <div class="col-7">
                 <table>
@@ -57,7 +57,7 @@
                             <p>Manufacturer</p> 
                         </td>
                         <td>
-                            <p>Rothana Heavy Engineerin</p> 
+                            <p><%= spacecraft.manufacturer %></p> 
                         </td>
                     </tr>
                     <tr class="details-table-row gray-row">
@@ -65,7 +65,7 @@
                             <p>Price</p> 
                         </td>
                         <td>
-                            <p>$200 000</p> 
+                            <p><%= spacecraft.price %></p> 
                         </td>
                     </tr>
                     <tr class="details-table-row gray-row">
@@ -73,7 +73,7 @@
                             <p>Passengers</p> 
                         </td>
                         <td>
-                            <p>20 + 5 additional</p> 
+                            <p><%= spacecraft.passengers %></p> 
                         </td>
                     </tr>
                     <tr class="details-table-row gray-row">
@@ -81,7 +81,7 @@
                             <p>Type</p> 
                         </td>
                         <td>
-                            <p>gunship</p> 
+                            <p><%= spacecraft.type %></p> 
                         </td>
                     </tr>
                     <tr class="details-table-row gray-row">
@@ -89,7 +89,7 @@
                             <p>Length</p> 
                         </td>
                         <td>
-                            <p>17.69 m</p> 
+                            <p><%= spacecraft.length %></p> 
                         </td>
                     </tr>
                     <tr class="details-table-row gray-row">
@@ -97,7 +97,7 @@
                             <p>Width</p> 
                         </td>
                         <td>
-                            <p>17 m</p> 
+                            <p><%= spacecraft.width %></p> 
                         </td>
                     </tr>
                     <tr class="details-table-row gray-row">
@@ -105,7 +105,7 @@
                             <p>Engine</p> 
                         </td>
                         <td>
-                            <p>Repulsorlift arrays</p> 
+                            <p><%= spacecraft.engine %></p> 
                         </td>
                     </tr>
                     <tr class="details-table-row gray-row">
@@ -113,7 +113,7 @@
                             <p>Hyperdrive</p> 
                         </td>
                         <td>
-                            <p>none</p> 
+                            <p><%= spacecraft.hyperdrive %></p> 
                         </td>
                     </tr>
                     <tr class="details-table-row gray-row">
@@ -121,7 +121,7 @@
                             <p>Cargo capacity</p> 
                         </td>
                         <td>
-                            <p>30 kg</p> 
+                            <p><%= spacecraft.cargoCapacity %></p> 
                         </td>
                     </tr>
                     <tr class="details-table-row gray-row">
@@ -129,7 +129,7 @@
                             <p>Maximum velocity</p> 
                         </td>
                         <td>
-                            <p>620 km/h</p> 
+                            <p><%= spacecraft.maxVelocity %></p> 
                         </td>
                     </tr>
                 </table>
@@ -137,20 +137,27 @@
         </div>
         <div class="row">
             <div class="col-12 comments">
-                <div class="comment">
-                    <h3 class="comment-title">
-                        Very best spacecraft in whole star wars universe!!! 100% recommended!
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <h4 class="comment-date">2022.03.07.</h4>
-                </div>
-                <div class="comment">
-                    <h3 class="comment-title">
-                        Very best spacecraft in whole star wars universe!!! 100% recommended!
-                    </h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    <h4 class="comment-date">2022.03.07.</h4>
-                </div>
+                <% if(typeof spacecraft.comments !== 'undefined') {%> <%# Could check comments.length here, we will see which fits better %> 
+                    
+                    <% for(key in spaceraft.comments) { let comment = spaceraft.comments[key];%>
+
+                        <div class="comment">
+                            <h3 class="comment-title">
+                                <%= comment.title %> 
+                            </h3>
+                            <p><%= comment.text %></p>
+                            <h4 class="comment-date"><%= comment.date %></h4>
+                        </div>
+
+                    <% } %>  
+
+                <% } else{ %>
+
+                    <div class="error-message">
+                        <p class="cyan">There are no comments for this spacecraft. Yet!</p>
+                    </div>
+
+                <% } %> 
             </div>
         </div>
     </div>
