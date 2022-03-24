@@ -5,7 +5,7 @@
     <ul class="flexbox">
         <%- include('logo') %> 
         <%- include('logged-in', {loggedInUser: loggedInUser}) %>
-        <%- include('logout') %>  
+        <%- include('logout', {loggedInUser: loggedInUser}) %>  
     </ul>
 </nav>
 
@@ -165,6 +165,6 @@
 
 <%- include('footer') %> 
 
-<script src="/js/logout.js"></script>
+<script src="/js/userops.js"></script>
 
 <%- include('closing') %> 

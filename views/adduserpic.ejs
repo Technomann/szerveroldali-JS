@@ -1,0 +1,46 @@
+<%- include('head', {title: 'Add picture', id: 'addpicture'}) %> 
+
+<nav>
+    <ul class="flexbox">
+        <%- include('logo') %> 
+        <%- include('logged-in', {loggedInUser: loggedInUser}) %>
+        <%- include('useroperations', {loggedInUser: loggedInUser}) %>  
+    </ul>
+</nav>
+
+<%- include('title-container', {title: 'Add user picture'}) %> 
+
+<main class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <a class="btn btn-darks" href="/list">
+                    Back to listing
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 center">
+                <div id="addpic-container" class="input-container">
+                    <form id="addpic-form" method="post" action="/users/<%= loggedInUser._id %>/addpic">
+                        <label id="upload-container" for="upload-input">
+                            <img id="upload-photo" src="/assets/file_upload.png">
+                            <span id="upload-text">Select an image</span>
+                        </label>
+                        <input id="upload-input" type="file" name="profpic" accept="image/png, image/jpeg, image/webp, image/gif" required>
+                        <div class="center">
+                            <input class="btn btn-darks size-80" type="submit" value="Upload picture">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<%- include('footer') %> 
+
+<script src="/js/file_upload.js" type="application/javascript"></script>
+<script src="/js/userops.js"></script>
+
+<%- include('closing') %> 

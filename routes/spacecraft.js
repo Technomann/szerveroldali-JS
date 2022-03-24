@@ -59,7 +59,7 @@ module.exports = function(app){
      * Create spacecraft - POST with data
      */
     app.post('/spacecrafts/new', 
-        upload.single('spacectaftpic'),
+        upload.single('spacecraftpic'),
         authMW(objectRepository),
         saveSpacecraftMW(objectRepository),
         renderMW(objectRepository, 'addspacecraft')

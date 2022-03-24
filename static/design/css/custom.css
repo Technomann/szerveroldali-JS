@@ -132,23 +132,26 @@ nav a.compare, nav a.listing{
     color: #a7a7a7;
 }
 
-#logged-in-user, #logout-button, #login-register{
+#logged-in-user, .user-ops-button, #login-register{
     background-color: #a7a7a7;
     color: #000;
+}
+
+.user-ops-button{
+    border: 1px solid #000;
 }
 
 #logged-in-user{
     cursor: pointer;
 }
 
-#logout-button{
+#user-ops{
     position: fixed;
     top: 59px;
     right: 0;
-    border: 1px solid #000;
 }
 
-nav a:hover, #logged-in-user:hover, #logout-button:hover, #login-register:hover{
+nav a:hover, #logged-in-user:hover, .user-ops-button:hover, #login-register:hover{
     background-color: #e34c3c;
     color: #000;
 }
