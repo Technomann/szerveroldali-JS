@@ -1,0 +1,75 @@
+
+<%- include('head', {title: 'List view', id: 'list'}) %> 
+
+<nav>
+    <ul class="flexbox">
+        <%- include('logo') %>
+        <!--li> MUST IMPLEMENT!!!!
+            <button id="compare-button" class="compare" href="compare.html">
+                Compare
+            </button>
+        </li-->
+        <%- include('logged-in', {loggedInUser: loggedInUser}) %>
+        <%- include('useroperations', {loggedInUser: loggedInUser}) %>
+    </ul>
+</nav>
+
+<%- include('title-container', {title: 'Spacecrafts'}) %> 
+
+<main class="content">
+    <div class="container">
+        <div class="row buttons">
+            <div class="col-12">
+                <a class="btn btn-darks" href="/grid">
+                    Show in grid
+                </a>
+                <a class="btn btn-darks" href="/spacecrafts/new">
+                    Add spacecraft
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Manufacturer</th>
+                        <th>Price</th>
+                        <th>Max. velocity</th>
+                        <th>Author</th>
+                        <th>Details</th>
+                        <th>Compare</th>
+                    </tr> 
+                    <% for(key in spacerafts) { let spacecraft = spacerafts[key];%>
+
+                        <tr class="spacecraft-table-row gray-row">
+                            <td><%= spacecraft.name %></td>
+                            <td><%= spacecraft.type %></td>
+                            <td><%= spacecraft.manufacturer %></td>
+                            <td><%= spacecraft.price %></td>
+                            <td><%= spacecraft.maxVelocity %></td>
+                            <td><%= spacecraft.author %></td>
+                            <td><a class="btn btn-darks" href="details.html">Details</a></td>
+                            <td >
+                                <label class="checkbox-container">
+                                    <input id="<%= spacecraft._id %>" type="checkbox">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </td>
+                        </tr>
+
+                    <% } %>  
+
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
+
+<%- include('footer') %> 
+
+<script src="/js/userops.js"></script>
+<script src="/js/compare.js"></script>
+
+<%- include('closing') %> 
