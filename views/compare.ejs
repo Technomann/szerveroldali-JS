@@ -33,6 +33,33 @@
                         <th class="size-30 b-left">Value</th>
                         <th class="size-20">Property</th>
                     </tr>
+
+                    <tr class="spacecraft-table-row gray-row">
+                        <td>Rating</td>
+                        <td class="b-right italic">
+                            
+                            <% if(spacecraftA.rating !== 'undefined') { %>
+                                
+                                <%= spacecraftA.rating %>
+
+                            <% }else{ %>
+                                none
+                            <% } %>
+                            
+                        </td>
+                        <td class="b-left italic">
+
+                            <% if(spacecraftB.rating !== 'undefined') { %>
+                                
+                                <%= spacecraftB.rating %>
+
+                            <% }else{ %>
+                                none
+                            <% } %>
+                            
+                        </td>
+                        <td>Rating</td>
+                    </tr>
                     <tr class="spacecraft-table-row gray-row">
                         <td>Manufacturer</td>
                         <td class="b-right italic"><%= spacecraftA.manufacturer %></td>

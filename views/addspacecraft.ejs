@@ -1,0 +1,99 @@
+
+<%- include('head', {title: 'New spacecraft', id: 'addnew'}) %> 
+
+<nav>
+    <ul class="flexbox">
+        <%- include('logo') %>
+        <%- include('logged-in', {loggedInUser: loggedInUser}) %>
+        <%- include('useroperations', {loggedInUser: loggedInUser}) %>
+    </ul>
+</nav>
+
+<%- include('title-container', {title: 'Add new spacecraft'}) %> 
+
+<main class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <a class="btn btn-darks" href="/list">
+                    Back to listing
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 center">
+                <div class="input-container">
+
+                    <% if(typeof errorMessage !== 'undefined') { %>  
+                        
+                        <div class="error-message">
+                            <p class="cyan"><%= errorMessage %></p>
+                        </div>
+
+                    <% } %>
+
+                    <form method="post" action="/spacecrafts/new" enctype="multipart/form-data">
+                        <div class="input-field">
+                            <input id="spacecraft-name" type="text" required >
+                            <label for="spacecraft-name">Name</label>
+                        </div>
+                        <div class="input-field">
+                            <input id="spacecraft-manufacturer" type="text" required >
+                            <label for="spacecraft-manufacturer">Manufacturer</label>
+                        </div>
+                        <div class="input-field">
+                            <input id="spacecraft-price" type="number" required >
+                            <label for="spacecraft-price">Price ($)</label>
+                        </div>
+                        <div class="input-field">
+                            <input id="spacecraft-passengers" type="number" required >
+                            <label for="spacecraft-passengers">Passengers</label>
+                        </div>
+                        <div class="input-field">
+                            <input id="spacecraft-type" type="text" required >
+                            <label for="spacecraft-type">Type</label>
+                        </div>
+                        <div class="input-field">
+                            <input id="spacecraft-length" type="number" required >
+                            <label for="spacecraft-length">Length (m)</label>
+                        </div>
+                        <div class="input-field">
+                            <input id="spacecraft-width" type="number" required >
+                            <label for="spacecraft-width">Width (m)</label>
+                        </div>
+                        <div class="input-field">
+                            <input id="spacecraft-engine" type="text" required >
+                            <label for="spacecraft-engine">Engine</label>
+                        </div>
+                        <div class="input-field">
+                            <input id="spacecraft-hyperdrive" type="text" required >
+                            <label for="spacecraft-hyperdrive">Hyperdrive</label>
+                        </div>
+                        <div class="input-field">
+                            <input id="spacecraft-cargo" type="number" required >
+                            <label for="spacecraft-cargo">Cargo capacity (kg)</label>
+                        </div>
+                        <div class="input-field">
+                            <input id="spacecraft-velocity" type="number" required >
+                            <label for="spacecraft-velocity">Maximum velocity (km/h)</label>
+                        </div>
+                        <p class="center">If no data for given property,<br>use '-' character or 0 for numbers!</p>
+                        <label id="upload-container" for="upload-input">
+                            <img id="upload-photo" src="/assets/file_upload.png">
+                            <span id="upload-text">Select an image</span>
+                        </label>
+                        <input id="upload-input" type="file" name="spacecraftpic" accept="image/png, image/jpeg, image/webp, image/gif" required>
+                        <input class="btn btn-darks size-100" type="submit" value="Add">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<%- include('footer') %> 
+
+<script src="/js/userops.js"></script>
+<script src="/js/file_upload.js"></script>
+
+<%- include('closing') %> 

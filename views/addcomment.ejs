@@ -1,0 +1,56 @@
+
+<% include('head', {title: 'New comment', id: 'addnew'}) %> 
+
+<nav>
+    <ul class="flexbox">
+        <%- include('logo') %>
+        <%- include('logged-in', {loggedInUser: loggedInUser}) %>
+        <%- include('useroperations', {loggedInUser: loggedInUser}) %>
+    </ul>
+</nav>
+
+<%- inlude('title-container', {title: 'Comment or rate spacecraft'}) %>
+
+<main class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 center">
+                <div class="input-container">
+                    
+                    <% if(typeof errorMessage !== 'undefined') { %>  
+                        
+                        <div class="error-message">
+                            <p class="cyan"><%= errorMessage %></p>
+                        </div>
+
+                    <% } %>
+
+                    <form method="post" action="/comments/<%= spacecraft._id %>/new">
+                        <div class="input-field">
+                            <input id="spacecraft-comment-title" required />
+                            <label for="spacecraft-comment-title">Title of comment</label>
+                        </div>
+                        <div class="input-field">
+                            <input id="spacecraft-comment" required />
+                            <label for="spacecraft-comment">Comment</label>
+                        </div>
+                        <div class="input-field">
+                            <input id="spacecraft-rating" type="number" required min="1" max="5"/>
+                            <label for="spacecraft-rating">Rating</label>
+                        </div>
+                        <div class="add-buttons flexbox">
+                            <a class="btn btn-darks" href="/spaceraft/<%= spacecraft._id %>/details">Cancel</a>
+                            <input class="btn btn-darks" type="submit" value="Add">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<%- include('footer') %> 
+
+<script src="/js/userops.js"></script>
+
+<%- include('closing') %> 

@@ -17,6 +17,7 @@ module.exports = function(app){
     */
     app.all('/comments/:spacecraftid/new', 
         authMW(objectRepository),
+        getSpacecraftMW(objectRepository),
         saveCommentMW(objectRepository),
         renderMW(objectRepository, 'addcomment')
     );
