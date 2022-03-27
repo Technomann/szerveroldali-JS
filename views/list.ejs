@@ -4,11 +4,11 @@
 <nav>
     <ul class="flexbox">
         <%- include('logo') %>
-        <!--li> MUST IMPLEMENT!!!!
+        <li> 
             <button id="compare-button" class="compare" href="compare.html">
                 Compare
             </button>
-        </li-->
+        </li>
         <%- include('logged-in', {loggedInUser: loggedInUser}) %>
         <%- include('useroperations', {loggedInUser: loggedInUser}) %>
     </ul>
@@ -30,6 +30,9 @@
         </div>
         <div class="row">
             <div class="col-12">
+                <div id="compare-error-message" class="error-message hidden">
+                    <p class="cyan">You must choose <strong>two</strong> spacecrats!</p>
+                </div>
                 <table>
                     <tr>
                         <th>Name</th>
