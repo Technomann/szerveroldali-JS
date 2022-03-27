@@ -11,4 +11,9 @@ function modalClose(){
     let modal = document.getElementById("modal-container");
     modal.style.display = "none";
 }
+
+(function(){
+    const modalCloseButton = document.getElementById('modal-close');
+    modalCloseButton.addEventListener('click', modalClose);
+})();
   

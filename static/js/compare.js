@@ -6,13 +6,13 @@ function compare(){
         errorMsg.classList.remove('hidden');
         errorMsg.classList.add('block');
     }else{
-        const Http = new XMLHttpRequest();
+        const http = new XMLHttpRequest();
         const url='/compare/' + comparableSpacecraftIds[0] + '/' + comparableSpacecraftIds[1];
-        Http.open("GET", url);
-        Http.send();
+        http.open("GET", url);
+        http.send();
 
-        Http.onreadystatechange = (e) => {
-            console.log(Http.responseText)
+        http.onreadystatechange = (e) => {
+            console.log(http.responseText)
         }
     }
 }

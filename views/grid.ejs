@@ -1,0 +1,45 @@
+
+<%- include('head', {title: 'Grid view', id: 'grid-view'}) %>
+
+<nav>
+    <ul class="flexbox">
+        <%- include('logo') %>
+        <%- include('logged-in', {loggedInUser: loggedInUser}) %>
+        <%- include('useroperations', {loggedInUser: loggedInUser}) %>
+    </ul>
+</nav>
+
+<%- include('title-container', {title: 'Spacecraft grid'}) %> 
+
+<main class="content">
+    <div class="container">
+        <div class="row buttons">
+            <div class="col-12">
+                <a class="btn btn-darks" href="/list">
+                    Show in list
+                </a>
+            </div>
+        </div>
+        <div class="row">
+
+            <% for(key in spacecrafts){ let spacecraft = spacecrafts[key]; %>
+                
+                <div class="col-md-4">
+                    <div class="grid-item">
+                        <a href="/spacecraft/<%= spacecraft._id %>/details">
+                            <img src="/assets/spacecrafts/<%= spacecraft.imageName %>">
+                        </a>
+                    </div>
+                </div>
+
+            <% } %> 
+
+        </div>
+    </div>
+</main>
+
+<%- include('footer') %> 
+
+<script src="/js/userops.js"></script>
+
+<%- include('closing') %> 

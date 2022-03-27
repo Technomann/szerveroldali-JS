@@ -1,0 +1,166 @@
+
+<%- include('head', {title: 'Compare', id: 'compare'}) %> 
+
+<nav>
+    <ul class="flexbox">
+        <%- include('logo') %>
+        <%- include('logged-in', {loggedInUser: loggedInUser}) %>
+        <%- include('useroperations', {loggedInUser: loggedInUser}) %>
+    </ul>
+</nav>
+
+<%- inlude('title-container', {title: 'Spacecrafts comparison'}) %>
+
+<main class="content">
+    <div class="container">
+        <div class="row buttons">
+            <div class="col-12">
+                <a class="btn btn-darks" href="/list">
+                    Back to listing
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="comparison-images-container flexbox">
+                    <img id="<%= spacecraftA._id %>" class="new-layer comp-img" src="/assets/spacecrafts/<%= spacecraftA.imageName %>" onclick="showModalImage('<%= spacecraftA._id %>')"/>
+                    <img id="<%= spacecraftB._id %>" class="new-layer comp-img" src="/assets/spacecrafts/<%= spacecraftB.imageName %>" onclick="showModalImage('<%= spacecraftB._id %>')"/>
+                </div>
+                <table>
+                    <tr>
+                        <th class="size-20">Property</th>
+                        <th class="size-30 b-right">Value</th>
+                        <th class="size-30 b-left">Value</th>
+                        <th class="size-20">Property</th>
+                    </tr>
+                    <tr class="spacecraft-table-row gray-row">
+                        <td>Manufacturer</td>
+                        <td class="b-right italic"><%= spacecraftA.manufacturer %></td>
+                        <td class="b-left italic"><%= spacecraftB.manufacturer %></td>
+                        <td>Manufacturer</td>
+                    </tr>
+                    <tr class="spacecraft-table-row gray-row">
+                        <td>Price</td>
+                        <td class="b-right italic"><%= spacecraftA.price %></td>
+                        <td class="b-left italic"><%= spacecraftB.price %></td>
+                        <td>Price</td>
+                    </tr>
+                    <tr class="spacecraft-table-row gray-row">
+                        <td>Passengers</td>
+                        <td class="b-right italic"><%= spacecraftA.passengers %></td>
+                        <td class="b-left italic"><%= spacecraftB.passengers %></td>
+                        <td>Passengers</td>
+                    </tr>
+                    <tr class="spacecraft-table-row gray-row">
+                        <td>Type</td>
+                        <td class="b-right italic"><%= spacecraftA.type %></td>
+                        <td class="b-left italic"><%= spacecraftB.type %></td>
+                        <td>Type</td>
+                    </tr>
+                    <tr class="spacecraft-table-row gray-row">
+                        <td>Length</td>
+                        <td class="b-right italic"><%= spacecraftA.length %></td>
+                        <td class="b-left italic"><%= spacecraftB.length %></td>
+                        <td>Length</td>
+                    </tr>
+                    <tr class="spacecraft-table-row gray-row">
+                        <td>Width</td>
+                        <td class="b-right italic"><%= spacecraftA.width %></td>
+                        <td class="b-left italic"><%= spacecraftB.width %></td>
+                        <td>Width</td>
+                    </tr>
+                    <tr class="spacecraft-table-row gray-row">
+                        <td>Engine</td>
+                        <td class="b-right italic"><%= spacecraftA.engine %></td>
+                        <td class="b-left italic"><%= spacecraftB.engine %></td>
+                        <td>Engine</td>
+                    </tr>
+                    <tr class="spacecraft-table-row gray-row">
+                        <td>Hyperdrive</td>
+                        <td class="b-right italic"><%= spacecraftA.hyperdrive %></td>
+                        <td class="b-left italic"><%= spacecraftB.hyperdrive %></td>
+                        <td>Hyperdrive</td>
+                    </tr>
+                    <tr class="spacecraft-table-row gray-row">
+                        <td>Cargo</td>
+                        <td class="b-right italic"><%= spacecraftA.cargoCapacity %></td>
+                        <td class="b-left italic"><%= spacecraftB.cargoCapacity %></td>
+                        <td>Cargo</td>
+                    </tr>
+                    <tr class="spacecraft-table-row gray-row">
+                        <td>Maximum velocity</td>
+                        <td class="b-right italic"><%= spacecraftA.maxVelocity %></td>
+                        <td class="b-left italic"><%= spacecraftB.maxVelocity %></td>
+                        <td>Maximum velocity</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-6">
+                <div class="comments">
+                    <% if(typeof spacecraftA.comments !== 'undefined') {%>
+                    
+                        <% for(key in spaceraftA.comments) { let comment = spaceraftA.comments[key];%>
+    
+                            <div class="comment">
+                                <h3 class="comment-title">
+                                    <%= comment.title %> 
+                                </h3>
+                                <p><%= comment.text %></p>
+                                <h4 class="comment-date"><%= comment.date %></h4>
+                            </div>
+    
+                        <% } %>  
+    
+                    <% } else{ %>
+    
+                        <div class="error-message">
+                            <p class="cyan">There are no comments for this spacecraft. Yet!</p>
+                        </div>
+    
+                    <% } %> 
+
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="comments">
+                    <% if(typeof spacecraftB.comments !== 'undefined') {%>
+                    
+                        <% for(key in spaceraftB.comments) { let comment = spaceraftB.comments[key];%>
+    
+                            <div class="comment">
+                                <h3 class="comment-title">
+                                    <%= comment.title %> 
+                                </h3>
+                                <p><%= comment.text %></p>
+                                <h4 class="comment-date"><%= comment.date %></h4>
+                            </div>
+    
+                        <% } %>  
+    
+                    <% } else{ %>
+    
+                        <div class="error-message">
+                            <p class="cyan">There are no comments for this spacecraft. Yet!</p>
+                        </div>
+    
+                    <% } %> 
+                </div>
+            </div>
+        </div>
+
+        <div id="modal-container" class="hidden">
+            <span id="modal-close">
+                <img src="/assets/x.png">
+            </span>
+            <img id="modal-content">
+        </div>
+
+    </div>
+</main>
+
+<%- include('footer') %> 
+
+<script src="/js/modal.js"></script>
+<script src="/js/userops.js"></script>
+
+<%- include('closing') %>
