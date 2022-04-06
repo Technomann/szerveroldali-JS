@@ -25,9 +25,9 @@
             <div class="col-12 center">
                 <div id="login-container" class="input-container">
                     
-                    <% if(typeof errorMessage !== 'undefined') { %>  
+                    <% if(typeof error.message !== 'undefined') { %>  
                         <div class="error-message">
-                            <p class="cyan"><%= errorMessage %></p>
+                            <p class="cyan"><%= error.message %></p>
                         </div>
                     <% } %>
 

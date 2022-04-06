@@ -5,12 +5,17 @@ const saveRegistrationMW = require('../middlewares/auth/saveRegistrationMW');
 const logoutMW = require('../middlewares/auth/logoutMW');
 const getUserByEmailMW = require('../middlewares/users/getUserByEmailMW');
 const sendNewPasswordMW = require('../middlewares/auth/sendNewPasswordMW');
-const userModel = {};
+
+const CommentModel = require('../models/comment');
+const SpacecraftModel = require('../models/spacecraft');
+const UserModel = require('../models/user');
 
 module.exports = function(app){
     
     const objectRepository = {
-        userModel: userModel
+        CommentModel: CommentModel,
+        SpacecraftModel: SpacecraftModel,
+        UserModel: UserModel
     }
 
     /**

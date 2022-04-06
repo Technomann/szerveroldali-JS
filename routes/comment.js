@@ -4,12 +4,17 @@ const deleteCommentMW = require('../middlewares/comment/deleteCommentMW');
 const getCommentMW = require('../middlewares/comment/getCommentMW');
 const saveCommentMW = require('../middlewares/comment/saveCommentMW');
 const renderMW = require('../middlewares/utility/renderMW');
-const userModel = {};
+
+const CommentModel = require('../models/comment');
+const SpacecraftModel = require('../models/spacecraft');
+const UserModel = require('../models/user');
 
 module.exports = function(app){
-  
+    
     const objectRepository = {
-        userModel: userModel
+        CommentModel: CommentModel,
+        SpacecraftModel: SpacecraftModel,
+        UserModel: UserModel
     }
   
     /**

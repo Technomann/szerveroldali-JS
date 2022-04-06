@@ -4,13 +4,18 @@ const getUserByEmailMW = require('../middlewares/users/getUserByEmailMW');
 const saveUserPicMW = require('../middlewares/users/saveUserPicMW');
 const multer = require('multer');
 const upload = multer({dest: './static/assets/users/'});
-const userModel = {};
+
+const CommentModel = require('../models/comment');
+const SpacecraftModel = require('../models/spacecraft');
+const UserModel = require('../models/user');
 
 module.exports = function(app){
-
+    
     const objectRepository = {
-        userModel: userModel
-    };
+        CommentModel: CommentModel,
+        SpacecraftModel: SpacecraftModel,
+        UserModel: UserModel
+    }
 
     /**
      * Saves users picture

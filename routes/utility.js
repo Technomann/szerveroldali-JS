@@ -3,13 +3,18 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const authMW = require('../middlewares/auth/authMW');
 const renderMW = require('../middlewares/utility/renderMW');
-const userModel = {};
+
+const CommentModel = require('../models/comment');
+const SpacecraftModel = require('../models/spacecraft');
+const UserModel = require('../models/user');
 
 module.exports = function(app){
-
+    
     const objectRepository = {
-        userModel: userModel
-    };
+        CommentModel: CommentModel,
+        SpacecraftModel: SpacecraftModel,
+        UserModel: UserModel
+    }
 
     /**
      * Session above all

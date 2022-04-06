@@ -1,18 +1,23 @@
 const fofMW = require('../middlewares/error/404MW'); 
 const errorHandlerMW = require('../middlewares/error/errorHandlerMW');
 const renderMW = require('../middlewares/utility/renderMW');
-const userModel = {};
+
+const CommentModel = require('../models/comment');
+const SpacecraftModel = require('../models/spacecraft');
+const UserModel = require('../models/user');
 
 module.exports = function(app){
-  
+    
     const objectRepository = {
-        userModel: userModel
-    };
+        CommentModel: CommentModel,
+        SpacecraftModel: SpacecraftModel,
+        UserModel: UserModel
+    }
 
     /**
      * Error 
      */
-    app.get('/error/*',
+    app.get('/error',
         errorHandlerMW(objectRepository),
         renderMW(objectRepository, 'error')
     );

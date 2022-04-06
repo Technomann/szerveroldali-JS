@@ -10,13 +10,18 @@ const getSpacecraftsToCompareMW = require('../middlewares/spacecraft/getSpacecra
 const getUsersToCompareMW = require('../middlewares/users/getUsersToCompareMW');
 const multer = require('multer');
 const upload = multer({dest: './static/assets/spacecrafts/'});
-const userModel = {};
+
+const CommentModel = require('../models/comment');
+const SpacecraftModel = require('../models/spacecraft');
+const UserModel = require('../models/user');
 
 module.exports = function(app){
-
+    
     const objectRepository = {
-        userModel: userModel
-    };
+        CommentModel: CommentModel,
+        SpacecraftModel: SpacecraftModel,
+        UserModel: UserModel
+    }
 
     /**
      * List spacecrafts
