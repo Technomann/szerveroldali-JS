@@ -86,6 +86,7 @@ module.exports = function(app){
     app.get('/spacecraft/:spacecraftid/delete',
         authMW(objectRepository),
         getSpacecraftMW(objectRepository),
+        getCommentsMW(objectRepository),
         deleteSpacecraftMW(objectRepository)
     );
 
