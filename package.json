@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Technomann/szerveroldali-JS#readme",
   "dependencies": {
+    "async": "^3.2.3",
     "body-parser": "^1.19.2",
     "ejs": "^3.1.6",
     "express": "^4.17.3",
