@@ -12,17 +12,7 @@
             res.redirect('/error');
         }
 
-        const commentForDelete = res.locals.comments.find((comment) => {
-            comment._id == req.params.commentid;
-        });
-
-        if(typeof commentForDelete === 'undefined'){
-            res.error.code = '906';
-            res.error.message = 'No such comment.';
-            res.redirect('/error');
-        }
-
-        commentForDelete.remove((err) => {
+        res.locals.comment.remove((err) => {
             if(err){
                 res.error.code = '907';
                 res.error.message = 'Cannot delete comment.';

@@ -41,9 +41,8 @@ module.exports = function(app){
     /**
      * Delete comment
      */
-    app.get('/comment/:spacecraftid/:commentid/delete', 
+    app.get('/comment/:commentid/delete', 
         authMW(objectRepository),
-        getSpacecraftMW(objectRepository),
         getCommentMW(objectRepository),
         deleteCommentMW(objectRepository)
     );
