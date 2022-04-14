@@ -5,7 +5,9 @@
  const requireOption = require('../utility/requireOption');
 
  module.exports = function(objectRepository){
-     return function(req, res, next){
-         next();
-     };
+    return function(req, res, next){
+        req.session.destroy(err => {
+            res.redirect('/');
+        });
+    };
  };
