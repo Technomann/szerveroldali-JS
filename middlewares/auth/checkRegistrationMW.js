@@ -44,6 +44,11 @@ const requireOption = require('../utility/requireOption');
 
             if(user !== null){
                 res.error.message = 'E-mail already registered.';
+                res.locals.user = {
+                    username: req.body.username,
+                    email: req.body.email,
+                    password: req.body.password
+                };
                 return next();
             }
 
@@ -58,6 +63,11 @@ const requireOption = require('../utility/requireOption');
     
                 if(user !== null){
                     res.error.message = 'Username already registered.';
+                    res.locals.user = {
+                        username: req.body.username,
+                        email: req.body.email,
+                        password: req.body.password
+                    };
                     return next();
                 }
 

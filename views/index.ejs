@@ -33,11 +33,11 @@
 
                     <form id="login-form" method="post" action="/login">
                         <div class="input-field">
-                            <input id="username" name="username" type="text" required>
+                            <input id="username" name="username" type="text" required value="<%= typeof user !== 'undefined' ? user.username : ''%>">
                             <label for="username">Your username</label>
                         </div>
                         <div class="input-field">
-                            <input id="password" name="password" type="password" required>
+                            <input id="password" name="password" type="password" required value="<%= typeof user !== 'undefined' ? user.password : ''%>">
                             <label for="password">Your password</label>
                         </div>
                         <div class="center">
@@ -48,19 +48,19 @@
 
                     <form id="register-form" method="post" enctype="multipart/form-data" action="/register">
                         <div class="input-field">
-                            <input id="username-reg" name="username" type="text" required >
+                            <input id="username-reg" name="username" type="text" required value="<%= typeof user !== 'undefined' ? user.username : ''%>">
                             <label for="username-reg">Username</label>
                         </div>
                         <div class="input-field">
-                            <input id="email-reg" name="email" type="email" required >
+                            <input id="email-reg" name="email" type="email" required value="<%= typeof user !== 'undefined' ? user.email : ''%>">
                             <label for="email-reg">E-mail</label>
                         </div>
                         <div class="input-field">
-                            <input id="password-reg" name="password" type="password" required >
+                            <input id="password-reg" name="password" type="password" required value="<%= typeof user !== 'undefined' ? user.password : ''%>">
                             <label for="password-reg">Password</label>
                         </div>
                         <div class="input-field">
-                            <input id="password-again-reg" name="passwordagain" type="password" required >
+                            <input id="password-again-reg" name="passwordagain" type="password" required value="<%= typeof user !== 'undefined' ? user.password : ''%>">
                             <label for="password-again-reg">Password again</label>
                         </div>
                         <div class="center">

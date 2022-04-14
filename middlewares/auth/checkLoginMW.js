@@ -12,7 +12,7 @@
         if((typeof req.body === 'undefined') || (typeof req.body.username === 'undefined') || (typeof req.body.password === 'undefined')){
             res.error.code = '700';
             res.error.message = 'Not properly filled credentials.';
-            res.redirect('/error');
+            return res.redirect('/error');
         }
 
         UserModel.findOne({
@@ -21,23 +21,31 @@
             if(err){
                 res.error.code = '202';
                 res.error.message = 'Cannot get user from DB.';
-                res.redirect('/error');
+                return res.redirect('/error');
             }
 
             if(!user){
                 res.error.message = 'Username is not registered.';
+                res.locals.user = {
+                    username: req.body.username,
+                    password: req.body.password
+                };
                 return next();
             }
 
             if(user.password !== req.body.password){
                 res.error.message = 'Wrong password!';
+                res.locals.user = {
+                    username: req.body.username,
+                    password: req.body.password
+                };
                 return next();
             }
 
             req.session.loggedIn = true;
             res.locals.loggedInUser = user;
 
-            res.redirect('/homepage');
+            return res.redirect('/homepage');
         });
     };
  };
