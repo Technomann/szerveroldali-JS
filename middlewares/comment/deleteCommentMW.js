@@ -2,7 +2,7 @@
 /**
  * Deletes comment based on id, then redirects to /spacecraft/:spacecraftid/details
  */
- const reuireOption = require('../utility/requireOption');
+ const requireOption = require('../utility/requireOption');
 
  module.exports = function(objectRepository){
     return function(req, res, next){
@@ -29,7 +29,7 @@
                 res.redirect('/error');
             }
         });
-        
+
         res.redirect('/spacecraft/' + req.params.spacecraftid + '/details');
     };
  };
