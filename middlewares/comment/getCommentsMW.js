@@ -6,6 +6,15 @@
 
  module.exports = function(objectRepository){
      return function(req, res, next){
-         next();
+        CommentModel.find({_id: res.locals.spacecraft._id}, (err, comments) => {
+            if(err){
+                res.error.code = '988';
+                res.error.message = 'Cannot get comment.';
+                res.redirect('/error');
+            }
+
+            res.locals.comments = comments;
+            return next();
+        });
      };
  };

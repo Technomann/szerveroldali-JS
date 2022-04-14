@@ -18,7 +18,7 @@ module.exports = function(app){
      * Error 
      */
     app.get('/error',
-        errorHandlerMW(objectRepository),
+        //errorHandlerMW(objectRepository), //EZ ITT EGYÁLTALÁN NEM BIZTOS, HOGY KELL
         renderMW(objectRepository, 'error')
     );
 

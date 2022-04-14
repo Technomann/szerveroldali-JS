@@ -4,7 +4,7 @@ const db = require('../config/db');
 const Comment = db.model('Comment', {
     title: String,
     text: String,
-    date: {Date, default: Date.now},
+    date: Date,
     author: {
         type: Schema.Types.ObjectId,
         ref: 'User'

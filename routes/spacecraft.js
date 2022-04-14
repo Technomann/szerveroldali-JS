@@ -3,6 +3,7 @@ const authMW = require('../middlewares/auth/authMW');
 const getSpacecraftsMW = require('../middlewares/spacecraft/getSpacecraftsMW');
 const getSpacecraftMW = require('../middlewares/spacecraft/getSpacecraftMW');
 const getCommentsMW = require('../middlewares/comment/getCommentsMW');
+const getCommentsToCompareMW = require('../middlewares/comment/getCommentsToCompareMW');
 const checkSpacecraftOwnerMW = require('../middlewares/users/checkSpacecraftOwnerMW');
 const saveSpacecraftMW = require('../middlewares/spacecraft/saveSpacecraftMW');
 const deleteSpacecraftMW = require('../middlewares/spacecraft/deleteSpacecraftMW');
@@ -96,8 +97,8 @@ module.exports = function(app){
     app.get('/compare/:idA/:idB',
         authMW(objectRepository),
         getSpacecraftsToCompareMW(objectRepository),
-        getCommentsMW(objectRepository),
-        getUsersToCompareMW(objectRepository),
+        getCommentsToCompareMW(objectRepository),
+        //getUsersToCompareMW(objectRepository),
         renderMW(objectRepository, 'compare')
     );
 };

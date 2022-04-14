@@ -6,7 +6,6 @@
 
  module.exports = function(objectRepository){
      return function(err, req, res, next){
-        
-        next();
+        res.redirect('/error');
      };
  };

@@ -7,7 +7,6 @@
  module.exports = function(objectRepository){
      return function(req, res, next){
         res.locals.badUrl = req.originalUrl;
-        
-        next();
+        return next();
      };
  };
