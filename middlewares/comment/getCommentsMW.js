@@ -2,10 +2,12 @@
 /**
  * Get all comments for specific spacecraft or spacecrafts by spacecraftId and puts them into locals and calls next
  */
- const reuireOption = require('../utility/requireOption');
+ const requireOption = require('../utility/requireOption');
 
  module.exports = function(objectRepository){
-     return function(req, res, next){
+    const CommentModel = requireOption(objectRepository, 'CommentModel');
+    
+    return function(req, res, next){
         CommentModel.find({_id: res.locals.spacecraft._id}, (err, comments) => {
             if(err){
                 res.error.code = '988';
@@ -16,5 +18,5 @@
             res.locals.comments = comments;
             return next();
         });
-     };
+    };
  };

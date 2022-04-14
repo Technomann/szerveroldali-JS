@@ -2,7 +2,7 @@
 /**
  * Deletes spacecraft from db by id and redirects to /spacecrafts/list
  */
-const reuireOption = require('../utility/requireOption');
+const requireOption = require('../utility/requireOption');
 const async = require('async');
 
 
@@ -13,7 +13,7 @@ const async = require('async');
             return next();
         }
 
-        async.eachSeries(res.locals.comments, (comment, callback) =>{
+        async.eachSeries(res.locals.comments, (comment) =>{
             comment.remove((err) => {
                 if(err){
                     res.error.message = 'Comment deletion not succesfull. ID=' + comment._id;

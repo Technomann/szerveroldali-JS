@@ -2,12 +2,12 @@
 /**
  * Get spaecraft by id from db and puts into locals then calls next
  */
- const reuireOption = require('../utility/requireOption');
+ const requireOption = require('../utility/requireOption');
 
  module.exports = function(objectRepository){
-    const SpacecraftModel = reuireOption(objectRepository, 'SpacecraftModel');
+    const SpacecraftModel = requireOption(objectRepository, 'SpacecraftModel');
 
-     return function(req, res, next){
+    return function(req, res, next){
         SpacecraftModel.findOne({_id: req.params.spacecraftid}, (err, spacecraft) => {
             if(err || !spacecraft){
                 res.locals.error.code = '668';
@@ -19,6 +19,6 @@
             return next();
         });
 
-         next();
-     };
+        next();
+    };
  };

@@ -2,12 +2,14 @@
 /**
  * Gets two spacecrafts from db and calls next
  */
- const reuireOption = require('../utility/requireOption');
+ const requireOption = require('../utility/requireOption');
  const async = require('async');
 
  module.exports = function(objectRepository){
+    const SpacecraftModel = requireOption(objectRepository, 'SpacecraftModel');
+
     return async function(req, res, next){
-        await async.parallel([
+        async.parallel([
             SpacecraftModel.find({_id: req.params.idA}, (err, spacecraftA) => {
                 if(err){
                     res.error.code = '991';

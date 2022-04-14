@@ -1,11 +1,13 @@
 /**
  * Gets comments from db for comparison
  */
- const reuireOption = require('../utility/requireOption');
+ const requireOption = require('../utility/requireOption');
  const async = require('async');
 
  module.exports = function(objectRepository){
-     return async function(req, res, next){
+    const CommentModel = requireOption(objectRepository, 'CommentModel');
+
+    return async function(req, res, next){
         async.parallel([
             CommentModel.find({_id: res.locals.spacecraftA._id}, (err, commentsA) => {
                 if(err){
@@ -28,5 +30,5 @@
         ]);
 
         return next();
-     };
+    };
  };
