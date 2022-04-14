@@ -22,7 +22,7 @@
                     Rate or comment
                 </a>
 
-                <% if(spacecraft.author.username === loggedInUser.username) { %>
+                <% if(spacecraft.author._id === loggedInUser._id) { %>
                     <a class="btn btn-darks" href="/spacecraft/<%= spacecraft._id %>/edit">
                         Edit
                     </a>
@@ -148,7 +148,7 @@
                             <p><%= comment.text %></p>
                             <h4 class="comment-date"><%= comment.date %></h4>
 
-                            <% if(comment.author.username === loggedInUser.username) { %>
+                            <% if(comment.author._id === loggedInUser._id) { %>
                                 <a class="btn btn-darks" href="/comment/<%= spacecraft._id %>/<%= comment._id %>/edit">
                                     Edit
                                 </a>

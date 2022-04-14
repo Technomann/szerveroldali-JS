@@ -7,6 +7,6 @@
 
  module.exports = function(objectRepository){
      return function(req, res, next){
-         next();
+         next(); //EZ SZINTE BIZTOSAN NEM FOG KELLENI!
      };
  };
