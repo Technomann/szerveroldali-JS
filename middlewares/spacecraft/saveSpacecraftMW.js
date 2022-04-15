@@ -13,10 +13,24 @@
             return next();
         }
 
-        //Data megadásának tényének ellenőrzése
+        if((typeof req.body.name === 'undefined') ||
+        (typeof req.body.manufacturer === 'undefined') ||
+        (typeof req.body.price === 'undefined') ||
+        (typeof req.body.passengers === 'undefined') ||
+        (typeof req.body.type === 'undefined') ||
+        (typeof req.body.length === 'undefined') ||
+        (typeof req.body.width === 'undefined') ||
+        (typeof req.body.engine === 'undefined') ||
+        (typeof req.body.hyperdrive === 'undefined') ||
+        (typeof req.body.cargoCapacity === 'undefined') ||
+        (typeof req.body.maxSpeed === 'undefined')){
+            res.error.message = 'Please provide all the data!';
+            return next();
+        }
 
         if(typeof res.locals.spacecraft === 'undefined'){
             res.locals.spacecraft = new SpacecraftModel();
+            res.locals.spacecraft.rating = 0;
         }
 
         res.locals.spacecraft.name = req.body.name;
@@ -31,8 +45,6 @@
         res.locals.spacecraft.cargoCapacity = req.body.cargoCapacity;
         res.locals.spacecraft.maxSpeed = req.body.maxSpeed;
         res.locals.spacecraft.imageName = req.file.filename;
-
-        //Data értékének ellenőrzése, ha kell visszaküldése
 
         res.locals.spacecraft.save((err) => {
             if(err){
