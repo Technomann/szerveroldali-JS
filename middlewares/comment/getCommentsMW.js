@@ -10,8 +10,8 @@
     return function(req, res, next){
         CommentModel.find({_id: res.locals.spacecraft._id}, (err, comments) => {
             if(err){
-                res.error.code = '988';
-                res.error.message = 'Cannot get comment.';
+                res.locals.error.code = '988';
+                res.locals.error.message = 'Cannot get comment.';
                 res.redirect('/error');
             }
 

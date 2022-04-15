@@ -31,8 +31,8 @@ module.exports = function(app){
      */
     app.post('/register',
         checkRegistrationMW(objectRepository),
-        saveRegistrationMW(objectRepository),
-        renderMW(objectRepository, 'register')
+        //saveRegistrationMW(objectRepository),
+        renderMW(objectRepository, 'index')
     );
 
     /**

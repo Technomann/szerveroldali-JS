@@ -12,7 +12,7 @@
             if(err){
                 res.locals.error.code = "667";
                 res.locals.error.message = "Error during getting Spacecrafts";
-                res.redirect('/error');
+                return res.redirect('/error');
             }
 
             res.locals.spacecrafts = spacecrafts;

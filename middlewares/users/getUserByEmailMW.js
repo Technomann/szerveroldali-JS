@@ -10,8 +10,8 @@
      return function(req, res, next){
         if((typeof req.body === 'undefined') ||
         (typeof req.body.email === 'undefined')){
-            res.error.code = '431';
-            res.error.message = 'Please provide correct credentials.';
+            res.locals.error.code = '431';
+            res.locals.error.message = 'Please provide correct credentials.';
             return res.redirect('/error');
         }
 
@@ -19,8 +19,8 @@
             email: req.body.email
         }, (err, user) => {
             if(err){
-                res.error.code = '432';
-                res.error.message = 'Cannot get user from DB.';
+                res.locals.error.code = '432';
+                res.locals.error.message = 'Cannot get user from DB.';
                 return res.redirect('/error');
             }
 

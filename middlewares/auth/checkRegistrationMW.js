@@ -9,27 +9,44 @@ const requireOption = require('../utility/requireOption');
     const UserModel = requireOption(objectRepository, 'UserModel');
 
     return function(req, res, next){
-        if((typeof req.body === 'undefined') || 
-        (typeof req.body.username === 'undefined') || 
-        (typeof req.body.email === 'undefined') || 
-        (typeof req.body.password === 'undefined') || 
-        (typeof req.body.passwordagain === 'undefined')){
-            res.error.message = 'Please provide all the necessary data!';
+        if((typeof req.body === 'undefined')){
+            res.locals.error.message = 'Body para!';
+            return next();
+        }
+        if(
+        (typeof req.body.usernamereg === 'undefined')){
+            console.log(req.body.usernamereg);
+            res.locals.error.message = 'Username para!';
+            return next();
+        }else if((typeof req.body.emailreg === 'undefined')){
+            res.locals.error.message = 'EMail para!';
+            return next();
+        }else if((typeof req.body.passwordreg === 'undefined')){
+            res.locals.error.message = 'password para!';
+            return next();
+        }else if((typeof req.body.passwordagainreg === 'undefined')){
+            res.locals.error.message = 'again para';
+            return next();
+        }
+         
+        
+        {
+            res.locals.error.message = 'Please provide all the necessary data!';
             return next();
         }
 
         if(req.body.username.length < 3){
-            res.error.message = 'The username must be at least 3 characters long!';
+            res.locals.error.message = 'The username must be at least 3 characters long!';
             return next();
         }
 
         if(!req.body.email.includes('@')){
-            res.error.message = 'Please provide a valid e-mail address!';
+            res.locals.error.message = 'Please provide a valid e-mail address!';
             return next();
         }
 
         if(req.body.password !== req.body.passwordagain){
-            res.error.message = 'The passwords should match!';
+            res.locals.error.message = 'The passwords should match!';
             return next();
         }
 
@@ -37,13 +54,13 @@ const requireOption = require('../utility/requireOption');
             email: req.body.email
         }, (err, user) => {
             if(err){
-                res.error.code = '765';
-                res.error.message = 'Cannot get user from DB';
+                res.locals.error.code = '765';
+                res.locals.error.message = 'Cannot get user from DB';
                 return res.redirect('/error');
             }
 
             if(user !== null){
-                res.error.message = 'E-mail already registered.';
+                res.locals.error.message = 'E-mail already registered.';
                 res.locals.user = {
                     username: req.body.username,
                     email: req.body.email,
@@ -56,13 +73,13 @@ const requireOption = require('../utility/requireOption');
                 username: req.body.username
             }, (err, user) => {
                 if(err){
-                    res.error.code = '766';
-                    res.error.message = 'Cannot get user from DB';
+                    res.locals.error.code = '766';
+                    res.locals.error.message = 'Cannot get user from DB';
                     return res.redirect('/error');
                 }
     
                 if(user !== null){
-                    res.error.message = 'Username already registered.';
+                    res.locals.error.message = 'Username already registered.';
                     res.locals.user = {
                         username: req.body.username,
                         email: req.body.email,
@@ -77,9 +94,9 @@ const requireOption = require('../utility/requireOption');
                 newUser.password = req.body.password;
                 newUser.save((err) => {
                     if(err){
-                        res.error.code = '777';
-                        res.error.message = 'Cannot save user to database!';
-                        res.redirect('/error');
+                        res.locals.error.code = '777';
+                        res.locals.error.message = 'Cannot save user to database!';
+                        return res.redirect('/error');
                     }
 
                     return res.redirect('/login');

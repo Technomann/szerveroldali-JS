@@ -11,7 +11,7 @@
 
     return function(req, res, next){
         if(typeof res.locals.user === 'undefined'){
-            res.error.message = 'No such email registered.';
+            res.locals.error.message = 'No such email registered.';
             return next();
         }
 
@@ -23,8 +23,8 @@
         user.password = temporaryPassword;
         user.save((err) => {
             if(err){
-                res.error.code = '433';
-                res.error.message = 'Cannot update user.';
+                res.locals.error.code = '433';
+                res.locals.error.message = 'Cannot update user.';
                 return res.redirect('/error');
             }
 

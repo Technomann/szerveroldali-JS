@@ -49,14 +49,12 @@
 
         res.locals.spacecraft.save((err) => {
             if(err){
-                res.error.code = '437';
-                res.error.message = 'Cannot save sapcecraft into DB.';
+                res.locals.error.code = '437';
+                res.locals.error.message = 'Cannot save sapcecraft into DB.';
                 return res.redirect('/error');
             }
 
             return res.redirect('/spacecraft/' + res.locals.spacecraft._id + '/details');
         });
-
-
     };
  };

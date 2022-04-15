@@ -17,7 +17,7 @@ const async = require('async');
         if((typeof req.body.title === 'undefined') || 
         (typeof req.body.text === 'undefined') ||
         (typeof req.body.rating === 'undefined')){
-            res.error.message = 'Please provide all data!';
+            res.locals.error.message = 'Please provide all data!';
             return next();
         }
 
@@ -29,12 +29,12 @@ const async = require('async');
         res.locals.comment.text = req.body.text;
 
         if(req.body.rating > 5 || req.body.rating < 1){
-            res.error.message = 'Rating must be from 1 to 5!';
+            res.locals.error.message = 'Rating must be from 1 to 5!';
             return next();
         }
 
         if(req.body.title.length < 3|| req.body.text.length < 3){
-            res.error.message = 'Title and comment must be at least 3 characters long! ';
+            res.locals.error.message = 'Title and comment must be at least 3 characters long! ';
             return next();
         }
 
@@ -48,22 +48,22 @@ const async = require('async');
         async.parallel([
             res.locals.comment.save((err) => {
                 if(err){
-                    res.error.code = '777';
-                    res.error.message = 'Cannot save comment to DB.';
+                    res.locals.error.code = '777';
+                    res.locals.error.message = 'Cannot save comment to DB.';
                     return res.redirect('/error');
                 }
             }), 
             res.locals.spacecraft.save((err) => {
                 if(err){
-                    res.error.code = '779';
-                    res.error.message = 'Cannot save spaceceaft to DB.';
+                    res.locals.error.code = '779';
+                    res.locals.error.message = 'Cannot save spaceceaft to DB.';
                     return res.redirect('/error');
                 }
             })
         ], (err) => {
             if(err){
-                res.error.code = '778';
-                res.error.message = 'Cannot save values into DB.';
+                res.locals.error.code = '778';
+                res.locals.error.message = 'Cannot save values into DB.';
                 return res.redirect('/error');
             }
 

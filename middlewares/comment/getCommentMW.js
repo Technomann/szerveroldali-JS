@@ -10,8 +10,8 @@
      return function(req, res, next){
         CommentModel.findOne({_id: req.params.commentid}, (err, comment) => {
             if(err || !comment){
-                res.error.code = '900';
-                res.error.message = 'Cannot get comment!';
+                res.locals.error.code = '900';
+                res.locals.error.message = 'Cannot get comment!';
                 return res.redirect('/error');
             }
 

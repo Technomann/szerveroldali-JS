@@ -12,17 +12,17 @@
         async.parallel([
             SpacecraftModel.find({_id: req.params.idA}, (err, spacecraftA) => {
                 if(err){
-                    res.error.code = '991';
-                    res.error.message = 'Cannot get sapcecraft A.';
-                    res.redirect('/error');
+                    res.locals.error.code = '991';
+                    res.locals.error.message = 'Cannot get sapcecraft A.';
+                    return res.redirect('/error');
                 }
                 res.locals.spacecraftA = spacecraftA;
             }),
             SpacecraftModel.find({_id: req.params.idB}, (err, spacecraftB) => {
                 if(err){
-                    res.error.code = '992';
-                    res.error.message = 'Cannot get sapcecraft B.';
-                    res.redirect('/error');
+                    res.locals.error.code = '992';
+                    res.locals.error.message = 'Cannot get sapcecraft B.';
+                    return res.redirect('/error');
                 }
                 res.locals.spacecraftB = spacecraftB;
             }),

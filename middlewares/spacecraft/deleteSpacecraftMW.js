@@ -15,29 +15,30 @@ module.exports = function(objectRepository){
         async.eachSeries(res.locals.comments, (comment) =>{
             comment.remove((err) => {
                 if(err){
-                    res.error.message = 'Comment deletion not succesfull. ID=' + comment._id;
-                    res.error.code = '669';
+                    res.locals.error.message = 'Comment deletion not succesfull. ID=' + comment._id;
+                    res.locals.error.code = '669';
                     return res.redirect('/error');
                 }
             });
         }, (err) => {
             if(err){
-                res.error.message = 'Comment deletion not succesfull.'
-                res.error.code = '677';
-                res.redirect('/error');
+                res.locals.error.message = 'Comment deletion not succesfull.'
+                res.locals.error.code = '677';
+                return res.redirect('/error');
             }else{
                 const path = './static/assets/spacecrafts/' + res.locals.spacecraft.imageName;
 
                 res.locals.spacecraft.remove((err) => {
                     if(err){
-                        res.error.message = 'Spacecraft deletion not succesfull.'
-                        res.error.code = '669';
+                        res.locals.error.message = 'Spacecraft deletion not succesfull.'
+                        res.locals.error.code = '669';
                         return res.redirect('/error');
                     }
                     
                     fs.unlink(path, (err) => {
-                        res.error.code = '111';
-                        res.error.message = 'Cannot remove image: ' + path;
+                        res.locals.error.code = '111';
+                        res.locals.error.message = 'Cannot remove image: ' + path;
+                        return res.redirect('/error');
                     });
                 });
             }

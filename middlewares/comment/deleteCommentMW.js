@@ -7,19 +7,19 @@
  module.exports = function(objectRepository){
     return function(req, res, next){
         if(typeof res.locals.comments === 'undefined'){
-            res.error.code = '905';
-            res.error.message = 'Res comments undefined!';
-            res.redirect('/error');
+            res.locals.error.code = '905';
+            res.locals.error.message = 'Res comments undefined!';
+            return res.redirect('/error');
         }
 
         res.locals.comment.remove((err) => {
             if(err){
-                res.error.code = '907';
-                res.error.message = 'Cannot delete comment.';
-                res.redirect('/error');
+                res.locals.error.code = '907';
+                res.locals.error.message = 'Cannot delete comment.';
+                return res.redirect('/error');
             }
         });
 
-        res.redirect('/spacecraft/' + req.params.spacecraftid + '/details');
+        return res.redirect('/spacecraft/' + req.params.spacecraftid + '/details');
     };
  };

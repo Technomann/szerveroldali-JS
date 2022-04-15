@@ -10,8 +10,8 @@
 
     return function(req, res, next){
         if((typeof req.body === 'undefined') || (typeof req.body.username === 'undefined') || (typeof req.body.password === 'undefined')){
-            res.error.code = '700';
-            res.error.message = 'Not properly filled credentials.';
+            res.locals.error.code = '700';
+            res.locals.error.message = 'Not properly filled credentials.';
             return res.redirect('/error');
         }
 
@@ -19,13 +19,13 @@
             username: req.body.username
         }, (err, user) => {
             if(err){
-                res.error.code = '202';
-                res.error.message = 'Cannot get user from DB.';
+                res.locals.error.code = '202';
+                res.locals.error.message = 'Cannot get user from DB.';
                 return res.redirect('/error');
             }
 
             if(!user){
-                res.error.message = 'Username is not registered.';
+                res.locals.error.message = 'Username is not registered.';
                 res.locals.user = {
                     username: req.body.username,
                     password: req.body.password
@@ -34,7 +34,7 @@
             }
 
             if(user.password !== req.body.password){
-                res.error.message = 'Wrong password!';
+                res.locals.error.message = 'Wrong password!';
                 res.locals.user = {
                     username: req.body.username,
                     password: req.body.password
