@@ -15,16 +15,25 @@
 
         //Data megadásának tényének ellenőrzése
 
-        //Data kiírása res.locals-ba, hogy rossz input megadása esetén ne vsszen el a begépelt input
-
-        //Data értékének ellenőrzése, ha kell visszaküldése
-
         if(typeof res.locals.spacecraft === 'undefined'){
             res.locals.spacecraft = new SpacecraftModel();
         }
 
-        //Data kiírása res.locals-ba
-        
+        res.locals.spacecraft.name = req.body.name;
+        res.locals.spacecraft.manufacturer = req.body.manufacturer;
+        res.locals.spacecraft.price = req.body.price;
+        res.locals.spacecraft.passengers = req.body.passengers;
+        res.locals.spacecraft.type = req.body.type;
+        res.locals.spacecraft.length = req.body.length;
+        res.locals.spacecraft.width = req.body.width;
+        res.locals.spacecraft.engine = req.body.engine;
+        res.locals.spacecraft.hyperdrive = req.body.hyperdrive;
+        res.locals.spacecraft.cargoCapacity = req.body.cargoCapacity;
+        res.locals.spacecraft.maxSpeed = req.body.maxSpeed;
+        res.locals.spacecraft.imageName = req.file.filename;
+
+        //Data értékének ellenőrzése, ha kell visszaküldése
+
         res.locals.spacecraft.save((err) => {
             if(err){
                 res.error.code = '437';
