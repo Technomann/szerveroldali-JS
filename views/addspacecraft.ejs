@@ -34,55 +34,61 @@
 
                     <form method="post" action="/spacecrafts/new" enctype="multipart/form-data">
                         <div class="input-field">
-                            <input id="spacecraft-name" type="text" required >
+                            <input id="spacecraft-name" type="text" required value="<%= typeof spacecraft !== 'undefined' ? spacecraft.name : '' %>">
                             <label for="spacecraft-name">Name</label>
                         </div>
                         <div class="input-field">
-                            <input id="spacecraft-manufacturer" type="text" required >
+                            <input id="spacecraft-manufacturer" type="text" required value="<%= typeof spacecraft !== 'undefined' ? spacecraft.manufacturer : '' %>">
                             <label for="spacecraft-manufacturer">Manufacturer</label>
                         </div>
                         <div class="input-field">
-                            <input id="spacecraft-price" type="number" required >
+                            <input id="spacecraft-price" type="number" required value="<%= typeof spacecraft !== 'undefined' ? spacecraft.price : 0 %>">
                             <label for="spacecraft-price">Price ($)</label>
                         </div>
                         <div class="input-field">
-                            <input id="spacecraft-passengers" type="number" required >
+                            <input id="spacecraft-passengers" type="number" required value="<%= typeof spacecraft !== 'undefined' ? spacecraft.passengers : 0 %>">
                             <label for="spacecraft-passengers">Passengers</label>
                         </div>
                         <div class="input-field">
-                            <input id="spacecraft-type" type="text" required >
+                            <input id="spacecraft-type" type="text" required value="<%= typeof spacecraft !== 'undefined' ? spacecraft.type : '' %>">
                             <label for="spacecraft-type">Type</label>
                         </div>
                         <div class="input-field">
-                            <input id="spacecraft-length" type="number" required >
+                            <input id="spacecraft-length" type="number" required value="<%= typeof spacecraft !== 'undefined' ? spacecraft.length : 0 %>">
                             <label for="spacecraft-length">Length (m)</label>
                         </div>
                         <div class="input-field">
-                            <input id="spacecraft-width" type="number" required >
+                            <input id="spacecraft-width" type="number" required value="<%= typeof spacecraft !== 'undefined' ? spacecraft.width : 0 %>">
                             <label for="spacecraft-width">Width (m)</label>
                         </div>
                         <div class="input-field">
-                            <input id="spacecraft-engine" type="text" required >
+                            <input id="spacecraft-engine" type="text" required value="<%= typeof spacecraft !== 'undefined' ? spacecraft.engine : '' %>">
                             <label for="spacecraft-engine">Engine</label>
                         </div>
                         <div class="input-field">
-                            <input id="spacecraft-hyperdrive" type="text" required >
+                            <input id="spacecraft-hyperdrive" type="text" required value="<%= typeof spacecraft !== 'undefined' ? spacecraft.hyperdrive : '' %>">
                             <label for="spacecraft-hyperdrive">Hyperdrive</label>
                         </div>
                         <div class="input-field">
-                            <input id="spacecraft-cargo" type="number" required >
+                            <input id="spacecraft-cargo" type="number" required value="<%= typeof spacecraft !== 'undefined' ? spacecraft.cargoCapacity : 0 %>">
                             <label for="spacecraft-cargo">Cargo capacity (kg)</label>
                         </div>
                         <div class="input-field">
-                            <input id="spacecraft-velocity" type="number" required >
-                            <label for="spacecraft-velocity">Maximum velocity (km/h)</label>
+                            <input id="spacecraft-velocity" type="number" required value="<%= typeof spacecraft !== 'undefined' ? spacecraft.maxSpeed : 0 %>">
+                            <label for="spacecraft-velocity">Maximum speed (km/h)</label>
                         </div>
                         <p class="center">If no data for given property,<br>use '-' character or 0 for numbers!</p>
-                        <label id="upload-container" for="upload-input">
-                            <img id="upload-photo" src="/assets/file_upload.png">
-                            <span id="upload-text">Select an image</span>
-                        </label>
-                        <input id="upload-input" type="file" name="spacecraftpic" accept="image/png, image/jpeg, image/webp, image/gif" required>
+                        
+                        <% if(typeof res.locals.spacecraft === 'undefined') {%>
+
+                            <label id="upload-container" for="upload-input">
+                                <img id="upload-photo" src="/assets/file_upload.png">
+                                <span id="upload-text">Select an image</span>
+                            </label>
+                            <input id="upload-input" type="file" name="spacecraftpic" accept="image/png, image/jpeg, image/webp, image/gif" required>
+
+                        <% } %> 
+                        
                         <input class="btn btn-darks size-100" type="submit" value="Add">
                     </form>
                 </div>

@@ -11,6 +11,6 @@ module.exports = function(objectRepository){
             res.error.message = 'You are not logged in!';
             return res.redirect('/error');
         }
-        next();
+        return next();
     };
 };

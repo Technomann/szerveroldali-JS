@@ -13,11 +13,12 @@ const Spacecraft = db.model('Spacecraft', {
     engine: String,
     hyperdrive: String,
     cargoCapacity: Number,
-    maxVelocity: Number,
+    maxSpeed: Number,
     author: {
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
+    imageName: String
 });
 
 module.exports = Spacecraft;

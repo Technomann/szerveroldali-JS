@@ -20,6 +20,12 @@ const requireOption = require('../utility/requireOption');
             return next();
         }
 
+        res.locals.comment.title = req.body.title;
+        res.locals.comment.text = req.body.text;
+        res.locals.comment.date = Date.now();
+        res.locals.comment.author = res.locals.loggedInUser;
+        res.locals.comment.spacecraft = res.locals.spacecraft;
+
         if(req.body.rating > 5 || req.body.rating < 1){
             res.error.message = 'Rating must be from 1 to 5!';
             return next();
@@ -39,6 +45,8 @@ const requireOption = require('../utility/requireOption');
         res.locals.comment.date = Date.now();
         res.locals.comment.author = res.locals.loggedInUser;
         res.locals.comment.spacecraft = res.locals.spacecraft;
+
+        //req.body.rating-el kezdeni kell valamit!!
 
         res.locals.comment.save((err) => {
             if(err){

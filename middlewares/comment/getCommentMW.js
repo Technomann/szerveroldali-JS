@@ -12,11 +12,11 @@
             if(err || !comment){
                 res.error.code = '900';
                 res.error.message = 'Cannot get comment!';
-                res.redirect('/error');
+                return res.redirect('/error');
             }
 
             res.locals.comment = comment;
-            next();
+            return next();
         });
      };
  };
