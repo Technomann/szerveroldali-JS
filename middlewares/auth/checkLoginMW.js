@@ -43,7 +43,7 @@
             }
 
             req.session.loggedIn = true;
-            res.locals.loggedInUser = user;
+            req.session.loggedInUser = user;
 
             return res.redirect('/homepage');
         });

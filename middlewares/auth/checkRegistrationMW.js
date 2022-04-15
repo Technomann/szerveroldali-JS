@@ -9,31 +9,15 @@ const requireOption = require('../utility/requireOption');
     const UserModel = requireOption(objectRepository, 'UserModel');
 
     return function(req, res, next){
-        if((typeof req.body === 'undefined')){
-            res.locals.error.message = 'Body para!';
+        if((typeof req.body === 'undefined') ||
+        (typeof req.body.username === 'undefined') ||
+        (typeof req.body.email === 'undefined') ||
+        (typeof req.body.password === 'undefined') ||
+        (typeof req.body.passwordagain === 'undefined')){
+            res.locals.error.message = 'Please give all data properly!';
             return next();
         }
-        if(
-        (typeof req.body.usernamereg === 'undefined')){
-            console.log(req.body.usernamereg);
-            res.locals.error.message = 'Username para!';
-            return next();
-        }else if((typeof req.body.emailreg === 'undefined')){
-            res.locals.error.message = 'EMail para!';
-            return next();
-        }else if((typeof req.body.passwordreg === 'undefined')){
-            res.locals.error.message = 'password para!';
-            return next();
-        }else if((typeof req.body.passwordagainreg === 'undefined')){
-            res.locals.error.message = 'again para';
-            return next();
-        }
-         
-        
-        {
-            res.locals.error.message = 'Please provide all the necessary data!';
-            return next();
-        }
+        console.log(req.body);
 
         if(req.body.username.length < 3){
             res.locals.error.message = 'The username must be at least 3 characters long!';
@@ -99,7 +83,8 @@ const requireOption = require('../utility/requireOption');
                         return res.redirect('/error');
                     }
 
-                    return res.redirect('/login');
+                    res.locals.error.message = 'Registration succesfull! Please log in!';
+                    return res.redirect('/');
                 });
             })
         });

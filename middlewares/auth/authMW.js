@@ -11,6 +11,8 @@ module.exports = function(objectRepository){
             res.locals.error.message = 'You are not logged in!';
             return res.redirect('/error');
         }
+
+        res.locals.loggedInUser = req.session.loggedInUser;
         return next();
     };
 };

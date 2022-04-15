@@ -1,3 +1,4 @@
 import { Application } from './runtime.js';
-const app = new Application();
-app.load('./spline/scene.json');
+const canvas = document.getElementById('canvas3d');
+const app = new Application(canvas);
+app.load('./spline/scene.spline');
