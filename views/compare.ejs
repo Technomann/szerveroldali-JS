@@ -38,9 +38,9 @@
                         <td>Rating</td>
                         <td class="b-right italic">
                             
-                            <% if(spacecraftA.rating !== 'undefined') { %>
+                            <% if(spacecraftA.ratingSum !== 'undefined' && spacecraftA.ratingAmount !== 'undefined') { %>
                                 
-                                <%= spacecraftA.rating %>
+                                <%= spacecraftA.ratingSum / spacecraftA.ratingAmount %>
 
                             <% }else{ %>
                                 none
@@ -49,9 +49,9 @@
                         </td>
                         <td class="b-left italic">
 
-                            <% if(spacecraftB.rating !== 'undefined') { %>
+                            <% if(spacecraftB.ratingSum !== 'undefined' && spacecraftB.ratingAmount !== 'undefined') { %>
                                 
-                                <%= spacecraftB.rating %>
+                                <%= spacecraftB.ratingSum / spacecraftB.ratingAmount %>
 
                             <% }else{ %>
                                 none

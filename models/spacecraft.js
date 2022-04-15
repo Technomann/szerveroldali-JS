@@ -4,7 +4,8 @@ const db = require('../config/db');
 const Spacecraft = db.model('Spacecraft', {
     name: String,
     type: String,
-    rating: { type: Number, min: 0, max: 5 },
+    ratingSum: Number,
+    ratingAmount: Number,
     manufacturer: String,
     price: Number,
     passengers: Number,

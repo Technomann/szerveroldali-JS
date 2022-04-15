@@ -4,6 +4,7 @@
  * If GET: calls next
  */
 const requireOption = require('../utility/requireOption');
+const async = require('async');
 
  module.exports = function(objectRepository){
     const CommentModel = requireOption(objectRepository, 'CommentModel');
@@ -41,16 +42,32 @@ const requireOption = require('../utility/requireOption');
         res.locals.comment.author = res.locals.loggedInUser;
         res.locals.comment.spacecraft = res.locals.spacecraft;
 
-        //req.body.rating-el kezdeni kell valamit!!
+        res.locals.spacecraft.ratingSum += req.body.rating;
+        res.locals.spacecraft.ratingAmount++;
 
-        res.locals.comment.save((err) => {
+        async.parallel([
+            res.locals.comment.save((err) => {
+                if(err){
+                    res.error.code = '777';
+                    res.error.message = 'Cannot save comment to DB.';
+                    return res.redirect('/error');
+                }
+            }), 
+            res.locals.spacecraft.save((err) => {
+                if(err){
+                    res.error.code = '779';
+                    res.error.message = 'Cannot save spaceceaft to DB.';
+                    return res.redirect('/error');
+                }
+            })
+        ], (err) => {
             if(err){
-                res.error.code = '777';
-                res.error.message = 'Cannot save comment to DB.';
+                res.error.code = '778';
+                res.error.message = 'Cannot save values into DB.';
                 return res.redirect('/error');
             }
 
             return res.redirect('/spacecraft/' + res.locals.spacecraft._id + '/details');
-        })
+        });
     };
  };

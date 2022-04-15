@@ -30,7 +30,8 @@
 
         if(typeof res.locals.spacecraft === 'undefined'){
             res.locals.spacecraft = new SpacecraftModel();
-            res.locals.spacecraft.rating = 0;
+            res.locals.spacecraft.ratingSum = 0;
+            res.locals.spacecraft.ratingAmount = 0;
         }
 
         res.locals.spacecraft.name = req.body.name;
