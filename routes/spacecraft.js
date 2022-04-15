@@ -27,7 +27,7 @@ module.exports = function(app){
     /**
      * List spacecrafts
      */
-    app.get('/spacecrafts/list',
+    app.get('/list',
         authMW(objectRepository),
         getSpacecraftsMW(objectRepository),
         renderMW(objectRepository, 'list')
@@ -36,7 +36,7 @@ module.exports = function(app){
     /**
      * Grid spacecrafts
      */
-    app.get('/spacecrafts/grid',
+    app.get('/grid',
         authMW(objectRepository),
         getSpacecraftsMW(objectRepository),
         renderMW(objectRepository, 'grid')
