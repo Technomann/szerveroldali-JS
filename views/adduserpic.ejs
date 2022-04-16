@@ -22,7 +22,7 @@
         <div class="row">
             <div class="col-12 center">
                 <div id="addpic-container" class="input-container">
-                    <form id="addpic-form" method="post" action="/users/<%= loggedInUser._id %>/addpic">
+                    <form id="addpic-form" method="post" action="/users/<%= loggedInUser._id %>/addpic" enctype="multipart/form-data">
                         <label id="upload-container" for="upload-input">
                             <img id="upload-photo" src="/assets/file_upload.png">
                             <span id="upload-text">Select an image</span>

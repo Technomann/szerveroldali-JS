@@ -13,12 +13,16 @@ module.exports = function(objectRepository){
         }
 
         res.locals.user.imageName = req.file.filename;
+        req.session.loggedInUser = res.locals.user;
+        res.locals.loggedInUser = res.locals.user;
         res.locals.user.save((err) => {
             if(err){
                 res.locals.error.code = '554';
                 res.locals.error.message = 'Cannot save user into DB!';
                 return res.redirect('/error');
             }
+
+            return res.redirect('/list');
         });
     };
 };

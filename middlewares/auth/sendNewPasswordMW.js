@@ -7,31 +7,36 @@
  const randomString = require('randomstring');
 
  module.exports = function(objectRepository){
-    
-
     return function(req, res, next){
+        if(typeof req.body === 'undefined'){
+            res.locals.error.code = '2342';
+            res.locals.error.message = 'Some error happened!';
+            return res.redirect('/error');
+        }
+
+        if(typeof req.body.email === 'undefined'){
+            return next();
+        }
+
         if(typeof res.locals.user === 'undefined'){
             res.locals.error.message = 'No such email registered.';
             return next();
         }
 
-        const temporaryPassword = randomString.generate({
+        const newPassword = randomString.generate({
             length: 10,
             charset: 'alphabetic'
         });
 
-        user.password = temporaryPassword;
-        user.save((err) => {
+        res.locals.user.password = newPassword;
+        res.locals.user.save((err) => {
             if(err){
                 res.locals.error.code = '433';
                 res.locals.error.message = 'Cannot update user.';
                 return res.redirect('/error');
             }
-
-            console.log(temporaryPassword);
-
-            return res.redirect('/login');
+            console.log(newPassword);
+            return res.redirect('/');
         })
-       
     };
  };

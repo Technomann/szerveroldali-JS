@@ -17,6 +17,9 @@ require('./routes/spacecraft')(app);
 //COMMENT
 require('./routes/comment')(app);
 
+//USERS
+require('./routes/users')(app);
+
 //404 and standard error
 require('./routes/error')(app);
 

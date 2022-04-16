@@ -5,9 +5,9 @@
     <ul class="flexbox">
         <%- include('logo') %>
         <li> 
-            <button id="compare-button" class="compare" href="#">
+            <a id="compare-button" class="compare" href="#">
                 Compare
-            </button>
+            </a>
         </li>
         <%- include('logged-in', {loggedInUser: loggedInUser}) %>
         <%- include('useroperations', {loggedInUser: loggedInUser}) %>
@@ -31,7 +31,7 @@
         <div class="row">
             <div class="col-12">
                 <div id="compare-error-message" class="error-message hidden">
-                    <p class="cyan">You must choose <strong>two</strong> spacecrats!</p>
+                    <p class="cyan">You must choose <strong>two</strong> spacecrafts!</p>
                 </div>
                 <table>
                     <tr>
@@ -44,25 +44,27 @@
                         <th>Details</th>
                         <th>Compare</th>
                     </tr> 
-                    <% for(key in spacerafts) { let spacecraft = spacerafts[key];%>
+                    <% if(spacecrafts.length > 0 && typeof spacecrafts !== 'undefined') {%> 
+                        <% for(key in spacerafts) { let spacecraft = spacerafts[key];%>
 
-                        <tr class="spacecraft-table-row gray-row">
-                            <td><%= spacecraft.name %></td>
-                            <td><%= spacecraft.type %></td>
-                            <td><%= spacecraft.manufacturer %></td>
-                            <td><%= spacecraft.price %></td>
-                            <td><%= spacecraft.maxVelocity %></td>
-                            <td><%= spacecraft.author %></td>
-                            <td><a class="btn btn-darks" href="details.html">Details</a></td>
-                            <td >
-                                <label class="checkbox-container">
-                                    <input id="<%= spacecraft._id %>" type="checkbox">
-                                    <span class="checkmark"></span>
-                                </label>
-                            </td>
-                        </tr>
+                            <tr class="spacecraft-table-row gray-row">
+                                <td><%= spacecraft.name %></td>
+                                <td><%= spacecraft.type %></td>
+                                <td><%= spacecraft.manufacturer %></td>
+                                <td><%= spacecraft.price %></td>
+                                <td><%= spacecraft.maxVelocity %></td>
+                                <td><%= spacecraft.author %></td>
+                                <td><a class="btn btn-darks" href="details.html">Details</a></td>
+                                <td >
+                                    <label class="checkbox-container">
+                                        <input id="<%= spacecraft._id %>" type="checkbox">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </td>
+                            </tr>
 
-                    <% } %>  
+                        <% } %>  
+                    <% } %> 
 
                 </table>
             </div>

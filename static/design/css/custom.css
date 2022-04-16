@@ -143,6 +143,7 @@ nav a.compare, nav a.listing{
 
 #logged-in-user{
     cursor: pointer;
+    padding: 22px 30px;
 }
 
 #user-ops{

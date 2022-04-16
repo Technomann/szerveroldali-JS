@@ -21,17 +21,19 @@
             </div>
         </div>
         <div class="row">
-
-            <% for(key in spacecrafts){ let spacecraft = spacecrafts[key]; %>
-                
-                <div class="col-md-4">
-                    <div class="grid-item">
-                        <a href="/spacecraft/<%= spacecraft._id %>/details">
-                            <img src="/assets/spacecrafts/<%= spacecraft.imageName %>">
-                        </a>
+            
+            <% if(spacecrafts.length > 0 && typeof spacecrafts !== 'undefined') {%> 
+                <% for(key in spacecrafts){ let spacecraft = spacecrafts[key]; %>
+                    
+                    <div class="col-md-4">
+                        <div class="grid-item">
+                            <a href="/spacecraft/<%= spacecraft._id %>/details">
+                                <img src="/assets/spacecrafts/<%= spacecraft.imageName %>">
+                            </a>
+                        </div>
                     </div>
-                </div>
 
+                <% } %> 
             <% } %> 
 
         </div>

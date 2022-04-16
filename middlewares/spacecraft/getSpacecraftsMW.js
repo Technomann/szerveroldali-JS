@@ -14,7 +14,6 @@
                 res.locals.error.message = "Error during getting Spacecrafts";
                 return res.redirect('/error');
             }
-
             res.locals.spacecrafts = spacecrafts;
             return next();
         });
