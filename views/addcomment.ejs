@@ -25,17 +25,17 @@
 
                     <% } %>
 
-                    <form method="post" action="/comments/<%= spacecraft._id %>/new">
+                    <form method="post" action="<%= typeof comment === 'undefined' ? '/comments/' + spacecraft._id + '/new' : '/comment/' + spacecraft._id + '/' + comment._id + '/edit' %>"/>
                         <div class="input-field">
-                            <input id="spacecraft-comment-title" name="title" required value="<% typeof comment !== 'undefined' ? res.locals.comment.title : ''%>"/>
+                            <input id="spacecraft-comment-title" name="title" required value="<%= typeof comment !== 'undefined' ? comment.title : ''%>"/>
                             <label for="spacecraft-comment-title">Title of comment</label>
                         </div>
                         <div class="input-field">
-                            <input id="spacecraft-comment" name="text" required value="<% typeof comment !== 'undefined' ? res.locals.comment.text : ''%>"/>
+                            <input id="spacecraft-comment" name="text" required value="<%= typeof comment !== 'undefined' ? comment.text : ''%>"/>
                             <label for="spacecraft-comment">Comment</label>
                         </div>
                         <div class="input-field">
-                            <input id="spacecraft-rating" name="rating" type="number" required min="1" max="5" value="<%= typeof comment !== 'undefined' ? res.locals.comment.rating : 1%>"/>
+                            <input id="spacecraft-rating" name="rating" type="number" required min="1" max="5" value="<%= typeof comment !== 'undefined' ? comment.rating : 1%>"/>
                             <label for="spacecraft-rating">Rating</label>
                         </div>
                         <div class="add-buttons flexbox">

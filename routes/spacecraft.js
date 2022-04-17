@@ -57,7 +57,7 @@ module.exports = function(app){
         authMW(objectRepository),
         getSpacecraftMW(objectRepository),
         getCommentsMW(objectRepository),
-        checkSpacecraftOwnerMW(objectRepository),
+        //checkSpacecraftOwnerMW(objectRepository),
         renderMW(objectRepository, 'details')
     );
 

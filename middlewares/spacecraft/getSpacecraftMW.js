@@ -14,7 +14,6 @@
                 res.locals.error.message = 'There is no spacecraft based on this ID in the database!';
                 return res.redirect('/error');
             }
-
             res.locals.spacecraft = spacecraft;
             return next();
         });

@@ -137,9 +137,9 @@
         </div>
         <div class="row">
             <div class="col-12 comments">
-                <% if(typeof spacecraft.comments !== 'undefined') {%> <%# Could check comments.length here, we will see which fits better %> 
+                <% if(typeof spacecraft.comments !== 'undefined' && spacecraft.comments.length > 0) {%> <%# Could check comments.length here, we will see which fits better %> 
                     
-                    <% for(key in spacecraft.comments) { let comment = spacecraft.comments[key]; console.log(comment);%>
+                    <% for(key in spacecraft.comments) { let comment = spacecraft.comments[key];%>
 
                         <div class="comment">
                             <h3 class="comment-title">
@@ -152,7 +152,7 @@
                                 <a class="btn btn-darks" href="/comment/<%= spacecraft._id %>/<%= comment._id %>/edit">
                                     Edit
                                 </a>
-                                <a class="btn btn-darks" href="/comment/<%= comment._id %>/delete">
+                                <a class="btn btn-darks" href="/comment/<%= spacecraft._id %>/<%= comment._id %>/delete">
                                     Delete
                                 </a>
                             <% } %>

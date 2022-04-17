@@ -9,7 +9,7 @@
     const CommentModel = requireOption(objectRepository, 'CommentModel');
     
     return function(req, res, next){
-        CommentModel.find({spacecraft: mongoose.Types.ObjectId(res.locals.spacecraft._id)}, (err, comments) => {
+        CommentModel.find({spacecraft: res.locals.spacecraft._id}, (err, comments) => {
             if(err){
                 res.locals.error.code = '988';
                 res.locals.error.message = 'Cannot get comment.';

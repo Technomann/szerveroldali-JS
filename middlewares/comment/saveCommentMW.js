@@ -48,7 +48,7 @@ const async = require('async');
         res.locals.comment.spacecraft = res.locals.spacecraft;
 
         //ADJUST SPACECRAFT RATING
-        res.locals.spacecraft.ratingSum += req.body.rating;
+        res.locals.spacecraft.ratingSum = parseInt(res.locals.spacecraft.ratingSum) + parseInt(req.body.rating);
         res.locals.spacecraft.ratingAmount++;
 
         //SAVE SPACECRAFT AND COMMENT PARALLEL
