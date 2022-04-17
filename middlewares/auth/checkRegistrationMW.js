@@ -17,7 +17,6 @@ const requireOption = require('../utility/requireOption');
             res.locals.error.message = 'Please give all data properly!';
             return next();
         }
-        console.log(req.body);
 
         if(req.body.username.length < 3){
             res.locals.error.message = 'The username must be at least 3 characters long!';

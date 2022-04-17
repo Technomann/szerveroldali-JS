@@ -38,7 +38,7 @@
 
                     <% } %>
 
-                    <form method="post" action="<%= typeof spacecraft === 'undefined' ? '/spacecrafts/new' : '/spacecraft/' + spacecraft._id + '/edit'%>" <% if(typeof spacecraft === 'undefined') {enctype="multipart/form-data"} %>>
+                    <form method="post" action="<%= typeof spacecraft === 'undefined' ? '/spacecrafts/new' : '/spacecraft/' + spacecraft._id + '/edit'%>" <% if(typeof spacecraft === 'undefined') { %> enctype="multipart/form-data" <% } %>>
                         <div class="input-field">
                             <input id="spacecraft-name" name="name" type="text" required value="<%= typeof spacecraft !== 'undefined' ? spacecraft.name : '' %>">
                             <label for="spacecraft-name">Name</label>

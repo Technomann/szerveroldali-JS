@@ -14,10 +14,6 @@
             return next();
         }
 
-        if(req.method === 'POST'){
-            console.log(req);
-        }
-
         if((typeof req.body.name === 'undefined') ||
         (typeof req.body.manufacturer === 'undefined') ||
         (typeof req.body.price === 'undefined') ||
@@ -29,7 +25,6 @@
         (typeof req.body.hyperdrive === 'undefined') ||
         (typeof req.body.cargocapacity === 'undefined') ||
         (typeof req.body.maxspeed === 'undefined')){
-            console.log(req.body);
             res.locals.error.message = 'Please provide all the data!';
             return next();
         }
