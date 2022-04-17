@@ -1,7 +1,6 @@
 const renderMW = require('../middlewares/utility/renderMW');
 const checkLoginMW = require('../middlewares/auth/checkLoginMW');
 const checkRegistrationMW = require('../middlewares/auth/checkRegistrationMW');
-const saveRegistrationMW = require('../middlewares/auth/saveRegistrationMW');
 const logoutMW = require('../middlewares/auth/logoutMW');
 const getUserByEmailMW = require('../middlewares/users/getUserByEmailMW');
 const sendNewPasswordMW = require('../middlewares/auth/sendNewPasswordMW');
@@ -31,7 +30,6 @@ module.exports = function(app){
      */
     app.post('/register',
         checkRegistrationMW(objectRepository),
-        //saveRegistrationMW(objectRepository),
         renderMW(objectRepository, 'index')
     );
 

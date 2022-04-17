@@ -1,8 +1,7 @@
 
 /**
- * Logs the user out (delete session data??) and redirects to /
+ * LOGS THE USER OUT AND REDIRECTS TO /
  */
- const requireOption = require('../utility/requireOption');
 
  module.exports = function(objectRepository){
     return function(req, res, next){

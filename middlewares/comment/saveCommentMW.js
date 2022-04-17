@@ -10,7 +10,7 @@ const async = require('async');
     const CommentModel = requireOption(objectRepository, 'CommentModel');
 
     return function(req, res, next){
-        //HTTP GET
+        //CHECK IF HTTP GET
         if(req.method === 'GET'){
             return next();
         }
@@ -35,17 +35,17 @@ const async = require('async');
             return next();
         }
 
-        //IF ITS NEW COMMENT -> CREATE NEW ONE
-        if(typeof res.locals.comment === 'undefined'){
+        //IF ITS NEW COMMENT -> CREATE NEW ONE, SET AUTHOR AND SPACECRAFT
+        if(req.url.includes('new')){
             res.locals.comment = new CommentModel();
+            res.locals.comment.author = res.locals.loggedInUser;
+            res.locals.comment.spacecraft = res.locals.spacecraft;
         }
 
         //PROVIDE COMMENT DATA
         res.locals.comment.title = req.body.title;
         res.locals.comment.text = req.body.text;
         res.locals.comment.date = Date.now();
-        res.locals.comment.author = res.locals.loggedInUser;
-        res.locals.comment.spacecraft = res.locals.spacecraft;
 
         //ADJUST SPACECRAFT RATING
         res.locals.spacecraft.ratingSum = parseInt(res.locals.spacecraft.ratingSum) + parseInt(req.body.rating);
@@ -53,20 +53,22 @@ const async = require('async');
 
         //SAVE SPACECRAFT AND COMMENT PARALLEL
         async.parallel([
+            //SAVE COMMENT INTO DB
             (callback) => {
                 res.locals.comment.save((err) => {
                     if(err){
-                        res.locals.error.code = '777';
-                        res.locals.error.message = 'Cannot save comment to DB.';
+                        res.locals.error.code = '716';
+                        res.locals.error.message = 'Cannot save comment into DB.';
                         return res.redirect('/error');
                     }
                     callback(err);
                 })
             },
+            //SAVE RATING MODIFIED SPACECRAFT
             (callback) => {
                 res.locals.spacecraft.save((err) => {
                     if(err){
-                        res.locals.error.code = '779';
+                        res.locals.error.code = '717';
                         res.locals.error.message = 'Cannot save spaceceaft to DB.';
                         return res.redirect('/error');
                     }
@@ -75,8 +77,8 @@ const async = require('async');
             } 
         ], (err) => {
             if(err){
-                res.locals.error.code = '778';
-                res.locals.error.message = 'Cannot save values into DB.';
+                res.locals.error.code = '718';
+                res.locals.error.message = 'Error during async.parallel.';
                 return res.redirect('/error');
             }
             return res.redirect('/spacecraft/' + res.locals.spacecraft._id + '/details');

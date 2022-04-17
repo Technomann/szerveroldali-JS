@@ -1,8 +1,7 @@
 
 /**
- * Generically renders the front-end
+ * RENDERS THE GIVEN VIEW AND PASSES LOCALS
  */
- const reuireOption = require('../utility/requireOption');
 
  module.exports = function(objectRepository, viewName){
      return function(req, res){

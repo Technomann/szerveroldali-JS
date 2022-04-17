@@ -1,18 +1,18 @@
 
 /**
- * Get all comments for specific spacecraft or spacecrafts by spacecraftId and puts them into locals and calls next
+ * GET ALL COMMENTS FOR SPECIFIC SPACECRAFT BY ID, PUT THEM INTO LOCALS AND CALLS NEXT
  */
  const requireOption = require('../utility/requireOption');
- const mongoose = require('mongoose');
 
  module.exports = function(objectRepository){
     const CommentModel = requireOption(objectRepository, 'CommentModel');
     
     return function(req, res, next){
+        //QUERY COMMENTS
         CommentModel.find({spacecraft: res.locals.spacecraft._id}, (err, comments) => {
             if(err){
-                res.locals.error.code = '988';
-                res.locals.error.message = 'Cannot get comment.';
+                res.locals.error.code = '711';
+                res.locals.error.message = 'Cannot get comments from DB.';
                 res.redirect('/error');
             }
 

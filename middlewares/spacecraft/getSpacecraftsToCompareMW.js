@@ -14,8 +14,8 @@
             (callback) => {
                 SpacecraftModel.findOne({_id: req.params.idA}, (err, spacecraftA) => {
                     if(err){
-                        res.locals.error.code = '991';
-                        res.locals.error.message = 'Cannot get sapcecraft A.';
+                        res.locals.error.code = '726';
+                        res.locals.error.message = 'Cannot get sapcecraft A from DB.';
                         return res.redirect('/error');
                     }
                     res.locals.spacecraftA = spacecraftA;
@@ -26,8 +26,8 @@
             (callback) => {
                 SpacecraftModel.findOne({_id: req.params.idB}, (err, spacecraftB) => {
                     if(err){
-                        res.locals.error.code = '992';
-                        res.locals.error.message = 'Cannot get sapcecraft B.';
+                        res.locals.error.code = '727';
+                        res.locals.error.message = 'Cannot get sapcecraft B from DB.';
                         return res.redirect('/error');
                     }
                     res.locals.spacecraftB = spacecraftB;
@@ -35,9 +35,10 @@
                 });
             }
         ], (err) => {
+            //CHECK FOR ERROR
             if(err){
-                res.locals.error.code = '772833';
-                res.locals.error.message = 'Cannot get spacecrafts from DB.';
+                res.locals.error.code = '728';
+                res.locals.error.message = 'Error during asnyc.parallel.';
                 return res.redirect('/error');
             }
             return next();
