@@ -17,7 +17,7 @@ function compare(){
     }
 }
 
-function changeUncheckedBoxesBehaviour(nable){
+function changeUncheckedBoxesBehaviour(enable){
     const checkBoxes = document.querySelectorAll('input[type=checkbox]');
     const uncheckedBoxes = Array.from(checkBoxes)
     .filter(i => !i.checked);
