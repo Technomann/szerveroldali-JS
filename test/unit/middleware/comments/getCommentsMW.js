@@ -7,7 +7,7 @@ describe('getComments middleware ', function () {
         const mw = getCommentsMW({
             CommentModel:  {
                 find: (p1, cb) => {
-                    expect(p1).to.be.eql({spacecraft: '13'})
+                    expect(p1).to.be.eql({spacecraft: '13'});
                     cb(null, ['mockcomment1', 'mockcomment2']);
                 }
             }
@@ -37,7 +37,7 @@ describe('getComments middleware ', function () {
         const mw = getCommentsMW({
             CommentModel:  {
                 find: (p1, cb) => {
-                    expect(p1).to.be.eql({spacecraft: '13'})
+                    expect(p1).to.be.eql({spacecraft: '13'});
                     cb('dberror', null);
                 }
             }
@@ -74,7 +74,7 @@ describe('getComments middleware ', function () {
         const mw = getCommentsMW({
             CommentModel:  {
                 find: (p1, cb) => {
-                    expect(p1).to.be.eql({spacecraft: '13'})
+                    expect(p1).to.be.eql({spacecraft: '13'});
                     cb(undefined, []);
                 }
             }
@@ -85,7 +85,6 @@ describe('getComments middleware ', function () {
                 spacecraft: {
 
                 }
-                
             }
         };
         
