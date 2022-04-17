@@ -21,9 +21,6 @@ module.exports = function(app){
      */
     app.use(session({
         secret: 'Super Stardestroyer',
-        cookie: {
-            maxAge: 60000
-        },
         resave: true, 
         saveUninitialized: false
     }));
