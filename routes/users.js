@@ -40,7 +40,6 @@ module.exports = function(app){
     app.post('/users/:userid/addpic',
         upload.single('profpic'),
         authMW(objectRepository),
-          //TRY LIKE THAT
         getUserByEmailMW(objectRepository),
         saveUserPicMW(objectRepository)
     );

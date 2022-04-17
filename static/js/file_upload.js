@@ -4,7 +4,7 @@ const uploadContainer = document.getElementById('upload-container');
 const uploadImage = document.getElementById('upload-photo');
 
 (function(){
-    if(window.location.href.includes('new')){
+    if(window.location.href.includes('new') || window.location.href.includes('addpic')){
         uploadButton.addEventListener('change', 
             function(){
                 fileChosen.textContent = this.files[0].name;

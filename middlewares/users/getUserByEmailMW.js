@@ -12,8 +12,7 @@
         if(req.method === 'GET')
             return next();
 
-        if(typeof req.body === 'undefined' ||
-        typeof req.body.email === 'undefined'){
+        if(typeof req.body === 'undefined'){
             res.locals.error.code = '705';
             res.locals.error.message = 'Not properly filled credentials.';
             return res.redirect('/error');
