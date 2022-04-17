@@ -402,6 +402,10 @@ label[for="spacecraft-photo"]{
     color: cyan;
 }
 
+input:-internal-autofill-selected {
+    background-color: #696969;
+}
+
 /* MODAL */
 #modal-container {
     display: none;
