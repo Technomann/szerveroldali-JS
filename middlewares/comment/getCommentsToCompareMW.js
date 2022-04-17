@@ -1,5 +1,5 @@
 /**
- * Gets comments from db for comparison
+ * GETS COMMENTS FOR COMPARABLE SPACECRAFTS AND CALLS NEXT
  */
  const requireOption = require('../utility/requireOption');
  const async = require('async');
@@ -15,6 +15,7 @@
         }
 
         async.parallel([
+            //GET COMMENTS FOR FIRST SPACECRAFT
             (callback) => {
                 CommentModel.find({spacecraft: res.locals.spacecraftA._id}, (err, commentsA) => {
                     if(err){
@@ -26,6 +27,7 @@
                     return callback(err);
                 });
             },
+            //GET COMMENTS FOR SECOND SPACECRAFT
             (callback) => {
                 CommentModel.find({spacecraft: res.locals.spacecraftB._id}, (err, commentsB) => {
                     if(err){

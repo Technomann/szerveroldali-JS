@@ -1,6 +1,6 @@
 
 /**
- * Gets two spacecrafts from db and calls next
+ * GETS TWO SPACECRAFTS FROM DB FOR COMPARISON WITH ASYNC.PARALLEL AND CALLS NEXT
  */
  const requireOption = require('../utility/requireOption');
  const async = require('async');
@@ -10,6 +10,7 @@
 
     return async function(req, res, next){
         async.parallel([
+            //GET THE FIRST SPACECRAFT
             (callback) => {
                 SpacecraftModel.findOne({_id: req.params.idA}, (err, spacecraftA) => {
                     if(err){
@@ -21,6 +22,7 @@
                     return callback(err);
                 });
             },
+            //GET THE SECOND SPACECRAFT
             (callback) => {
                 SpacecraftModel.findOne({_id: req.params.idB}, (err, spacecraftB) => {
                     if(err){

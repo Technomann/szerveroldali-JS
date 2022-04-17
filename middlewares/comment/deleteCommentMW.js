@@ -1,6 +1,6 @@
 
 /**
- * Deletes comment based on id, then redirects to /spacecraft/:spacecraftid/details
+ * DELETES COMMENT BASED ON ID AND REDIRECTS TO /spacecraft/:spacecraftid/details
  */
  const requireOption = require('../utility/requireOption');
 

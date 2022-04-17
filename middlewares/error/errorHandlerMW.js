@@ -1,11 +1,12 @@
 
 /**
- * Handles errors and calls next
+ * HANDLES UNEXPECTED ERRORS
  */
- const reuireOption = require('../utility/requireOption');
 
  module.exports = function(objectRepository){
-     return function(err, req, res, next){
+    return function(err, req, res, next){
+        res.locals.error.message = err;
+        res.locals.error.code = '999';
         return res.redirect('/error');
-     };
- };
+    };
+};

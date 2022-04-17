@@ -1,6 +1,6 @@
 
 /**
- * Gets comment from db by Id and puts into locals then calls next
+ * GET COMMENT BASED ON ID, PUTS INTO LOCALS AND CALLS NEXT
  */
  const requireOption = require('../utility/requireOption');
 
