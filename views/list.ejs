@@ -51,9 +51,9 @@
                                 <td><%= spacecraft.name %></td>
                                 <td><%= spacecraft.type %></td>
                                 <td><%= spacecraft.manufacturer %></td>
-                                <td><%= spacecraft.price %></td>
-                                <td><%= spacecraft.maxSpeed %></td>
-                                <td><%= spacecraft.authorName %></td>
+                                <td>$<%= spacecraft.price %></td>
+                                <td><%= spacecraft.maxSpeed %> km/h</td>
+                                <td>@<%= spacecraft.authorName %></td>
                                 <td><a class="btn btn-darks" href="/spacecraft/<%= spacecraft._id %>/details">Details</a></td>
                                 <td >
                                     <label class="checkbox-container">
