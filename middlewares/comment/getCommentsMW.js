@@ -9,7 +9,7 @@
     
     return function(req, res, next){
         //QUERY COMMENTS
-        CommentModel.find({spacecraft: res.locals.spacecraft._id}, (err, comments) => {
+        CommentModel.find({spacecraft: req.params.spacecraftid}, (err, comments) => {
             if(err){
                 res.locals.error.code = '711';
                 res.locals.error.message = 'Cannot get comments from DB.';
