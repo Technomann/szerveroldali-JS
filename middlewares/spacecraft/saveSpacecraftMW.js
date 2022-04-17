@@ -9,8 +9,13 @@
     const SpacecraftModel = requireOption(objectRepository, 'SpacecraftModel');
 
     return function(req, res, next){
-        if(typeof req.body === 'undefined'){
+        //HTTP GET
+        if(req.method === 'GET'){
             return next();
+        }
+
+        if(req.method === 'POST'){
+            console.log(req);
         }
 
         if((typeof req.body.name === 'undefined') ||
@@ -24,6 +29,7 @@
         (typeof req.body.hyperdrive === 'undefined') ||
         (typeof req.body.cargocapacity === 'undefined') ||
         (typeof req.body.maxspeed === 'undefined')){
+            console.log(req.body);
             res.locals.error.message = 'Please provide all the data!';
             return next();
         }
@@ -32,6 +38,7 @@
             res.locals.spacecraft = new SpacecraftModel();
             res.locals.spacecraft.ratingSum = 0;
             res.locals.spacecraft.ratingAmount = 0;
+            res.locals.spacecraft.imageName = req.file.filename;
         }
 
         res.locals.spacecraft.name = req.body.name;
@@ -45,7 +52,6 @@
         res.locals.spacecraft.hyperdrive = req.body.hyperdrive;
         res.locals.spacecraft.cargoCapacity = req.body.cargocapacity;
         res.locals.spacecraft.maxSpeed = req.body.maxspeed;
-        res.locals.spacecraft.imageName = req.file.filename;
         res.locals.spacecraft.author = res.locals.loggedInUser;
         res.locals.spacecraft.authorName = res.locals.loggedInUser.username;
 

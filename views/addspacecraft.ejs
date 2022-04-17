@@ -15,9 +15,15 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <a class="btn btn-darks" href="/list">
-                    Back to listing
-                </a>
+                <% if(typeof spacecraft === 'undefined') {%> 
+                    <a class="btn btn-darks" href="/list">
+                        Back to listing
+                    </a>
+                <% }else{ %>
+                    <a class="btn btn-darks" href="/spacecraft/<%= spacecraft._id %>/details">
+                        Back to details
+                    </a>
+                <% } %>  
             </div>
         </div>
         <div class="row">
@@ -32,7 +38,7 @@
 
                     <% } %>
 
-                    <form method="post" action="/spacecrafts/new" enctype="multipart/form-data">
+                    <form method="post" action="<%= typeof spacecraft === 'undefined' ? '/spacecrafts/new' : '/spacecraft/' + spacecraft._id + '/edit'%>" <% if(typeof spacecraft === 'undefined') {enctype="multipart/form-data"} %>>
                         <div class="input-field">
                             <input id="spacecraft-name" name="name" type="text" required value="<%= typeof spacecraft !== 'undefined' ? spacecraft.name : '' %>">
                             <label for="spacecraft-name">Name</label>
@@ -89,7 +95,7 @@
 
                         <% } %> 
                         
-                        <input class="btn btn-darks size-100" type="submit" value="Add">
+                        <input class="btn btn-darks size-100" type="submit" value="<%= typeof spacecraft === 'undefined' ? 'Add' : 'Update'%>">
                     </form>
                 </div>
             </div>

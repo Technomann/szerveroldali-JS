@@ -4,9 +4,11 @@ const uploadContainer = document.getElementById('upload-container');
 const uploadImage = document.getElementById('upload-photo');
 
 (function(){
-    uploadButton.addEventListener('change', 
-        function(){
-            fileChosen.textContent = this.files[0].name;
-        }
-    );
+    if(window.location.href.includes('new')){
+        uploadButton.addEventListener('change', 
+            function(){
+                fileChosen.textContent = this.files[0].name;
+            }
+        );
+    }
 })();
