@@ -19,6 +19,7 @@ const Spacecraft = db.model('Spacecraft', {
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
+    authorName: String,
     imageName: String
 });
 

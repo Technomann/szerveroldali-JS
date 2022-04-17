@@ -9,8 +9,16 @@ const saveSpacecraftMW = require('../middlewares/spacecraft/saveSpacecraftMW');
 const deleteSpacecraftMW = require('../middlewares/spacecraft/deleteSpacecraftMW');
 const getSpacecraftsToCompareMW = require('../middlewares/spacecraft/getSpacecraftsToCompareMW');
 const getUsersToCompareMW = require('../middlewares/users/getUsersToCompareMW');
+
+const path = require('path');
 const multer = require('multer');
-const upload = multer({dest: './static/assets/spacecrafts/'});
+const storage = multer.diskStorage({
+    destination: './static/assets/spacecrafts/',
+    filename: (req, file, cb) => {
+        cb(null, file.fieldname + '_' + Date.now() + path.extname(file.originalname));
+    }
+});
+const upload = multer({storage: storage});
 
 const CommentModel = require('../models/comment');
 const SpacecraftModel = require('../models/spacecraft');

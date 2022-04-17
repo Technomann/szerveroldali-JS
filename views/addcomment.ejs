@@ -1,5 +1,5 @@
 
-<% include('head', {pagetitle: 'New comment', id: 'addnew'}) %> 
+<%- include('head', {pagetitle: 'New comment', id: 'addnew'}) %> 
 
 <nav>
     <ul class="flexbox">
@@ -9,7 +9,7 @@
     </ul>
 </nav>
 
-<%- inlude('title-container', {title: 'Comment or rate spacecraft'}) %>
+<%- include('title-container', {title: 'Comment or rate spacecraft'}) %>
 
 <main class="content">
     <div class="container">
@@ -39,7 +39,7 @@
                             <label for="spacecraft-rating">Rating</label>
                         </div>
                         <div class="add-buttons flexbox">
-                            <a class="btn btn-darks" href="/spaceraft/<%= spacecraft._id %>/details">Cancel</a>
+                            <a class="btn btn-darks" href="/spacecraft/<%= spacecraft._id %>/details">Cancel</a>
                             <input class="btn btn-darks" type="submit" value="Add">
                         </div>
                     </form>

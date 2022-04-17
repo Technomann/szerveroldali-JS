@@ -45,16 +45,16 @@
                         <th>Compare</th>
                     </tr> 
                     <% if(spacecrafts.length > 0 && typeof spacecrafts !== 'undefined') {%> 
-                        <% for(key in spacerafts) { let spacecraft = spacerafts[key];%>
+                        <% for(key in spacecrafts) { let spacecraft = spacecrafts[key];%>
 
                             <tr class="spacecraft-table-row gray-row">
                                 <td><%= spacecraft.name %></td>
                                 <td><%= spacecraft.type %></td>
                                 <td><%= spacecraft.manufacturer %></td>
                                 <td><%= spacecraft.price %></td>
-                                <td><%= spacecraft.maxVelocity %></td>
-                                <td><%= spacecraft.author %></td>
-                                <td><a class="btn btn-darks" href="details.html">Details</a></td>
+                                <td><%= spacecraft.maxSpeed %></td>
+                                <td><%= spacecraft.authorName %></td>
+                                <td><a class="btn btn-darks" href="/spacecraft/<%= spacecraft._id %>/details">Details</a></td>
                                 <td >
                                     <label class="checkbox-container">
                                         <input id="<%= spacecraft._id %>" type="checkbox">

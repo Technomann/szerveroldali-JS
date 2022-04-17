@@ -2,8 +2,8 @@ const renderMW = require('../middlewares/utility/renderMW');
 const authMW = require('../middlewares/auth/authMW');
 const getUserByEmailMW = require('../middlewares/users/getUserByEmailMW');
 const saveUserPicMW = require('../middlewares/users/saveUserPicMW');
-const path = require('path');
 
+const path = require('path');
 const multer = require('multer');
 const storage = multer.diskStorage({
     destination: './static/assets/users/',

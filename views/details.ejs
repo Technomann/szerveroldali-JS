@@ -1,15 +1,15 @@
 
-<%- include('head', {title: 'Details', id: 'details'}) %>
+<%- include('head', {pagetitle: 'Details', id: 'details'}) %>
 
 <nav>
     <ul class="flexbox">
         <%- include('logo') %> 
         <%- include('logged-in', {loggedInUser: loggedInUser}) %>
-        <%- include('logout', {loggedInUser: loggedInUser}) %>  
+        <%- include('useroperations', {loggedInUser: loggedInUser}) %>  
     </ul>
 </nav>
 
-<%- include('title-container', {pagetitle: 'Spacecraft details'}) %> 
+<%- include('title-container', {title: 'Spacecraft details'}) %> 
 
 <main class="content">
     <div class="container">
@@ -22,7 +22,7 @@
                     Rate and comment
                 </a>
 
-                <% if(spacecraft.author._id === loggedInUser._id) { %>
+                <% if(spacecraft.author.valueOf() === loggedInUser._id) { %>
                     <a class="btn btn-darks" href="/spacecraft/<%= spacecraft._id %>/edit">
                         Edit
                     </a>
@@ -44,7 +44,7 @@
                         , <%= spacecraft.type %>
                     </span>
                 </div>
-                <p class="user-owner">added by <%= spacecraft.author %></p>
+                <p class="user-owner">added by <%= spacecraft.authorName %></p>
             </div>
             <div class="col-7">
                 <table>
@@ -139,7 +139,7 @@
             <div class="col-12 comments">
                 <% if(typeof spacecraft.comments !== 'undefined') {%> <%# Could check comments.length here, we will see which fits better %> 
                     
-                    <% for(key in spaceraft.comments) { let comment = spaceraft.comments[key];%>
+                    <% for(key in spacecraft.comments) { let comment = spaceraft.comments[key];%>
 
                         <div class="comment">
                             <h3 class="comment-title">
@@ -148,7 +148,7 @@
                             <p><%= comment.text %></p>
                             <h4 class="comment-date"><%= comment.date %></h4>
 
-                            <% if(comment.author._id === loggedInUser._id) { %>
+                            <% if(comment.author === loggedInUser._id) { %>
                                 <a class="btn btn-darks" href="/comment/<%= spacecraft._id %>/<%= comment._id %>/edit">
                                     Edit
                                 </a>

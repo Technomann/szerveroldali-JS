@@ -22,9 +22,9 @@
         (typeof req.body.width === 'undefined') ||
         (typeof req.body.engine === 'undefined') ||
         (typeof req.body.hyperdrive === 'undefined') ||
-        (typeof req.body.cargoCapacity === 'undefined') ||
-        (typeof req.body.maxSpeed === 'undefined')){
-            res.error.message = 'Please provide all the data!';
+        (typeof req.body.cargocapacity === 'undefined') ||
+        (typeof req.body.maxspeed === 'undefined')){
+            res.locals.error.message = 'Please provide all the data!';
             return next();
         }
 
@@ -43,9 +43,11 @@
         res.locals.spacecraft.width = req.body.width;
         res.locals.spacecraft.engine = req.body.engine;
         res.locals.spacecraft.hyperdrive = req.body.hyperdrive;
-        res.locals.spacecraft.cargoCapacity = req.body.cargoCapacity;
-        res.locals.spacecraft.maxSpeed = req.body.maxSpeed;
+        res.locals.spacecraft.cargoCapacity = req.body.cargocapacity;
+        res.locals.spacecraft.maxSpeed = req.body.maxspeed;
         res.locals.spacecraft.imageName = req.file.filename;
+        res.locals.spacecraft.author = res.locals.loggedInUser;
+        res.locals.spacecraft.authorName = res.locals.loggedInUser.username;
 
         res.locals.spacecraft.save((err) => {
             if(err){
