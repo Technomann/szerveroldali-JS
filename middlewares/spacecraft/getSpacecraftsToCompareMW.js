@@ -11,7 +11,7 @@
     return async function(req, res, next){
         async.parallel([
             (callback) => {
-                SpacecraftModel.find({_id: req.params.idA}, (err, spacecraftA) => {
+                SpacecraftModel.findOne({_id: req.params.idA}, (err, spacecraftA) => {
                     if(err){
                         res.locals.error.code = '991';
                         res.locals.error.message = 'Cannot get sapcecraft A.';
@@ -22,7 +22,7 @@
                 });
             },
             (callback) => {
-                SpacecraftModel.find({_id: req.params.idB}, (err, spacecraftB) => {
+                SpacecraftModel.findOne({_id: req.params.idB}, (err, spacecraftB) => {
                     if(err){
                         res.locals.error.code = '992';
                         res.locals.error.message = 'Cannot get sapcecraft B.';

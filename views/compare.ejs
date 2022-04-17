@@ -9,7 +9,7 @@
     </ul>
 </nav>
 
-<%- inlude('title-container', {title: 'Spacecrafts comparison'}) %>
+<%- include('title-container', {title: 'Spacecrafts comparison'}) %>
 
 <main class="content">
     <div class="container">
@@ -23,7 +23,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="comparison-images-container flexbox">
-                    <img id="<%= spacecraftA._id %>" class="new-layer comp-img" src="/assets/spacecrafts/<%= spacecraftA.imageName %>" onclick="showModalImage('<%= spacecraftA._id %>')"/>
+                    <img id="<%= spacecraftA._id %>asd" class="new-layer comp-img" src="/assets/spacecrafts/<%= spacecraftA.imageName %>" onclick="showModalImage('<%= spacecraftA._id %>')"/>
                     <img id="<%= spacecraftB._id %>" class="new-layer comp-img" src="/assets/spacecrafts/<%= spacecraftB.imageName %>" onclick="showModalImage('<%= spacecraftB._id %>')"/>
                 </div>
                 <table>
@@ -33,13 +33,12 @@
                         <th class="size-30 b-left">Value</th>
                         <th class="size-20">Property</th>
                     </tr>
-
                     <tr class="spacecraft-table-row gray-row">
                         <td>Rating</td>
                         <td class="b-right italic">
                             
-                            <% if(spacecraftA.ratingSum !== 'undefined' && spacecraftA.ratingAmount !== 'undefined') { %>
-                                
+                            <% if(typeof spacecraftA.ratingSum !== 'undefined' && typeof spacecraftA.ratingAmount !== 'undefined') { %>
+
                                 <%= spacecraftA.ratingSum / spacecraftA.ratingAmount %>
 
                             <% }else{ %>
@@ -49,7 +48,7 @@
                         </td>
                         <td class="b-left italic">
 
-                            <% if(spacecraftB.ratingSum !== 'undefined' && spacecraftB.ratingAmount !== 'undefined') { %>
+                            <% if(typeof spacecraftB.ratingSum !== 'undefined' && typeof spacecraftB.ratingAmount !== 'undefined') { %>
                                 
                                 <%= spacecraftB.ratingSum / spacecraftB.ratingAmount %>
 
@@ -74,14 +73,14 @@
                     </tr>
                     <tr class="spacecraft-table-row gray-row">
                         <td>Price</td>
-                        <td class="b-right italic"><%= spacecraftA.price %></td>
-                        <td class="b-left italic"><%= spacecraftB.price %></td>
+                        <td class="b-right italic">$<%= spacecraftA.price %></td>
+                        <td class="b-left italic">$<%= spacecraftB.price %></td>
                         <td>Price</td>
                     </tr>
                     <tr class="spacecraft-table-row gray-row">
                         <td>Passengers</td>
-                        <td class="b-right italic"><%= spacecraftA.passengers %></td>
-                        <td class="b-left italic"><%= spacecraftB.passengers %></td>
+                        <td class="b-right italic"><%= spacecraftA.passengers %> person</td>
+                        <td class="b-left italic"><%= spacecraftB.passengers %> person</td>
                         <td>Passengers</td>
                     </tr>
                     <tr class="spacecraft-table-row gray-row">
@@ -92,14 +91,14 @@
                     </tr>
                     <tr class="spacecraft-table-row gray-row">
                         <td>Length</td>
-                        <td class="b-right italic"><%= spacecraftA.length %></td>
-                        <td class="b-left italic"><%= spacecraftB.length %></td>
+                        <td class="b-right italic"><%= spacecraftA.length %> m</td>
+                        <td class="b-left italic"><%= spacecraftB.length %> m</td>
                         <td>Length</td>
                     </tr>
                     <tr class="spacecraft-table-row gray-row">
                         <td>Width</td>
-                        <td class="b-right italic"><%= spacecraftA.width %></td>
-                        <td class="b-left italic"><%= spacecraftB.width %></td>
+                        <td class="b-right italic"><%= spacecraftA.width %> m</td>
+                        <td class="b-left italic"><%= spacecraftB.width %> m</td>
                         <td>Width</td>
                     </tr>
                     <tr class="spacecraft-table-row gray-row">
@@ -116,30 +115,30 @@
                     </tr>
                     <tr class="spacecraft-table-row gray-row">
                         <td>Cargo</td>
-                        <td class="b-right italic"><%= spacecraftA.cargoCapacity %></td>
-                        <td class="b-left italic"><%= spacecraftB.cargoCapacity %></td>
+                        <td class="b-right italic"><%= spacecraftA.cargoCapacity %> kg</td>
+                        <td class="b-left italic"><%= spacecraftB.cargoCapacity %> kg</td>
                         <td>Cargo</td>
                     </tr>
                     <tr class="spacecraft-table-row gray-row">
                         <td>Maximum speed</td>
-                        <td class="b-right italic"><%= spacecraftA.maxSpeed %></td>
-                        <td class="b-left italic"><%= spacecraftB.maxSpeed %></td>
+                        <td class="b-right italic"><%= spacecraftA.maxSpeed %> km/h</td>
+                        <td class="b-left italic"><%= spacecraftB.maxSpeed %> km/h</td>
                         <td>Maximum speed</td>
                     </tr>
                 </table>
             </div>
             <div class="col-6">
                 <div class="comments">
-                    <% if(typeof spacecraftA.comments !== 'undefined') {%>
+                    <% if(typeof spacecraftA.comments !== 'undefined' && spacecraftA.comments.length > 0) {%>
                     
-                        <% for(key in spaceraftA.comments) { let comment = spaceraftA.comments[key];%>
+                        <% for(key in spacecraftA.comments) { let comment = spacecraftA.comments[key];%>
     
                             <div class="comment">
                                 <h3 class="comment-title">
                                     <%= comment.title %> 
                                 </h3>
                                 <p><%= comment.text %></p>
-                                <h4 class="comment-date"><%= comment.date %></h4>
+                                <h4 class="comment-date"><%= comment.date.toLocaleString('hu-HU', 'medium') %></h4>
                             </div>
     
                         <% } %>  
@@ -156,16 +155,16 @@
             </div>
             <div class="col-6">
                 <div class="comments">
-                    <% if(typeof spacecraftB.comments !== 'undefined') {%>
+                    <% if(typeof spacecraftB.comments !== 'undefined' && spacecraftB.comments.length > 0) {%>
                     
-                        <% for(key in spaceraftB.comments) { let comment = spaceraftB.comments[key];%>
+                        <% for(key in spacecraftB.comments) { let comment = spacecraftB.comments[key];%>
     
                             <div class="comment">
                                 <h3 class="comment-title">
                                     <%= comment.title %> 
                                 </h3>
                                 <p><%= comment.text %></p>
-                                <h4 class="comment-date"><%= comment.date %></h4>
+                                <h4 class="comment-date"><%= comment.date.toLocaleString('hu-HU', 'medium') %></h4>
                             </div>
     
                         <% } %>  

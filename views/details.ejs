@@ -65,7 +65,7 @@
                             <p>Price</p> 
                         </td>
                         <td>
-                            <p><%= spacecraft.price %></p> 
+                            <p>$<%= spacecraft.price %></p> 
                         </td>
                     </tr>
                     <tr class="details-table-row gray-row">
@@ -73,7 +73,7 @@
                             <p>Passengers</p> 
                         </td>
                         <td>
-                            <p><%= spacecraft.passengers %></p> 
+                            <p><%= spacecraft.passengers %> person</p> 
                         </td>
                     </tr>
                     <tr class="details-table-row gray-row">
@@ -89,7 +89,7 @@
                             <p>Length</p> 
                         </td>
                         <td>
-                            <p><%= spacecraft.length %></p> 
+                            <p><%= spacecraft.length %> m</p> 
                         </td>
                     </tr>
                     <tr class="details-table-row gray-row">
@@ -97,7 +97,7 @@
                             <p>Width</p> 
                         </td>
                         <td>
-                            <p><%= spacecraft.width %></p> 
+                            <p><%= spacecraft.width %> m</p> 
                         </td>
                     </tr>
                     <tr class="details-table-row gray-row">
@@ -121,7 +121,7 @@
                             <p>Cargo capacity</p> 
                         </td>
                         <td>
-                            <p><%= spacecraft.cargoCapacity %></p> 
+                            <p><%= spacecraft.cargoCapacity %> kg</p> 
                         </td>
                     </tr>
                     <tr class="details-table-row gray-row">
@@ -129,7 +129,7 @@
                             <p>Maximum speed</p> 
                         </td>
                         <td>
-                            <p><%= spacecraft.maxSpeed %></p> 
+                            <p><%= spacecraft.maxSpeed %> km/h</p> 
                         </td>
                     </tr>
                 </table>
@@ -146,7 +146,7 @@
                                 <%= comment.title %> 
                             </h3>
                             <p><%= comment.text %></p>
-                            <h4 class="comment-date"><%= comment.date %></h4>
+                            <h4 class="comment-date"><%= comment.date.toLocaleString('hu-HU', 'medium') %></h4>
 
                             <% if(comment.author.valueOf() === loggedInUser._id) { %>
                                 <a class="btn btn-darks" href="/comment/<%= spacecraft._id %>/<%= comment._id %>/edit">

@@ -6,7 +6,6 @@ function compare(e){
     e.preventDefault();
     if(comparableSpacecraftIds.length < 2){
         compareButton.href = '#';
-
         const errorMsg = document.getElementById('compare-error-message');
         errorMsg.classList.remove('hidden');
         errorMsg.classList.add('block');
